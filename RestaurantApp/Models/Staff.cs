@@ -25,9 +25,6 @@ namespace RestaurantApp.Models
 
         public bool StaffIsDeleted { get; set; }
 
-        public static explicit operator Staff(string v)
-        {
-            throw new NotImplementedException();
-        }
+        public string Token;
     }
 }

@@ -42,8 +42,9 @@ namespace RestaurantApp.Services.Service
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
                 };
                 var token = tokenHandler.CreateToken(tokenDescriptor);
-                //user.To
-                return null;
+                user.Token = tokenHandler.WriteToken(token);
+                user.StaffPassword = null;
+                return user;
             }
 
         }
