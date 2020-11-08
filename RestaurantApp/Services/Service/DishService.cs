@@ -18,9 +18,9 @@ namespace RestaurantApp.Services.Service
             this.context = context;
         }
 
-        public  List<Dish> GetAllDishAsync()
+        public async Task<List<Dish>> GetAllDishAsync()
         {
-            return  context.Dish.Where(x=>x.DishIsDeleted==0).ToList();
+            return await context.Dish.Where(x => !x.DishIsDeleted).ToListAsync();
         }
 
         public Dish GetById(string id)
@@ -38,7 +38,7 @@ namespace RestaurantApp.Services.Service
         public void DeleteById(string id)
         {
             var obj = context.Dish.Where(x => x.DishId == id).FirstOrDefault();
-            obj.DishIsDeleted = 1;
+            obj.DishIsDeleted = true;
             context.Dish.Update(obj);
             context.SaveChanges();
         }

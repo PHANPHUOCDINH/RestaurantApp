@@ -19,6 +19,6 @@ namespace RestaurantApp.Models
 
         public DateTime? NotiDate { get; set; }
 
-        public int NotiIsDeleted { get; set; }
+        public bool NotiIsDeleted { get; set; }
     }
 }

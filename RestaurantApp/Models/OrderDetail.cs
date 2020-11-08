@@ -21,6 +21,6 @@ namespace RestaurantApp.Models
 
         public DateTime? OrderDetailEndtime { get; set; }
 
-        public int OrderDetailIsDeleted { get; set; }
+        public bool OrderDetailIsDeleted { get; set; }
     }
 }

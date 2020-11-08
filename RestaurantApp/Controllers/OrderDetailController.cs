@@ -16,15 +16,15 @@ namespace RestaurantApp.Controllers
             this.service = service;
         }
         [HttpGet("getallorderdetail")]
-        public List<OrderDetail> GetAllOrderDetail()
+        public async Task<List<OrderDetail>> GetAllOrderDetail()
         {
-            return service.GetAll();
+            return await service.GetAll();
         }
 
         [HttpGet("getallorderdetailbyidorder/{id?}")]
-        public List<OrderDetail> GetAllOrderDetailByIdOrder(string id)
+        public async Task<List<OrderDetail>> GetAllOrderDetailByIdOrder(string id)
         {
-            return service.GetAllByOrderId(id);
+            return await service.GetAllByOrderId(id);
         }
         [HttpGet("getbyid/{id?}")]
         public OrderDetail GetOrderDetailById(string id)

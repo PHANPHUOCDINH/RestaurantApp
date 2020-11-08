@@ -23,6 +23,6 @@ namespace RestaurantApp.Models
 
         public string OrderStatus { get; set; }
 
-        public int OrderIsDeleted { get; set; }
+        public bool OrderIsDeleted { get; set; }
     }
 }

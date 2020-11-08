@@ -23,6 +23,11 @@ namespace RestaurantApp.Models
 
         public string StaffSalary { get; set; }
 
-        public int StaffIsDeleted { get; set; }
+        public bool StaffIsDeleted { get; set; }
+
+        public static explicit operator Staff(string v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

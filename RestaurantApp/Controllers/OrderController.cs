@@ -17,9 +17,9 @@ namespace RestaurantApp.Controllers
         }
 
         [HttpGet("getallorder")]
-        public List<Order> GetAllOrderAsync()
+        public async Task<List<Order>> GetAllOrderAsync()
         {
-            return service.GetAll();
+            return await service.GetAll();
         }
 
         [HttpGet("getorderbyid/{id?}")]

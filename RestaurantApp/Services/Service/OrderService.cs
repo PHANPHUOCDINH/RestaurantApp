@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace RestaurantApp.Services.Service
 {
@@ -19,7 +20,7 @@ namespace RestaurantApp.Services.Service
         public void DeleteById(string id)
         {
             var obj = context.Order.Where(x => x.OrderId == id).FirstOrDefault();
-            obj.OrderIsDeleted = 1;
+            obj.OrderIsDeleted = true;
             context.Order.Update(obj);
             context.SaveChanges();
         }
@@ -30,15 +31,16 @@ namespace RestaurantApp.Services.Service
             return (Order)obj;
         }
 
-        public List<Order> GetAll()
+        public async Task<List<Order>> GetAll()
         {
-            return context.Order.ToList();
+            return await context.Order.ToListAsync();
         }
+
 
         public void Insert(Order order)
         {
             order.OrderId = Guid.NewGuid().ToString();
-            order.OrderIsDeleted = 0;
+            order.OrderIsDeleted = false;
             context.Order.Add(order);
             context.SaveChanges();
         }

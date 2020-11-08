@@ -17,9 +17,9 @@ namespace RestaurantApp.Controllers
         }
 
         [HttpGet("getallstaff")]
-        public  List<Staff> GetAllStaffAsync()
+        public async Task<List<Staff>> GetAllStaffAsync()
         {
-            return  service.GetAll();
+            return await service.GetAll();
         }
 
         [HttpPost("addstaff")]

@@ -10,9 +10,9 @@ namespace RestaurantApp.Services.IService
     {
         void Insert(OrderDetail orderdetail);
 
-        List<OrderDetail> GetAll();
+        Task<List<OrderDetail>> GetAll();
 
-        List<OrderDetail> GetAllByOrderId(string orderid);
+        Task<List<OrderDetail>> GetAllByOrderId(string orderid);
 
         void UpdateCookRequest(string id,string cook_id,DateTime starttime,DateTime endtime);
 

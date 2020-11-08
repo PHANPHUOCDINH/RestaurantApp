@@ -17,9 +17,9 @@ namespace RestaurantApp.Controllers
         }
 
         [HttpGet("getalldish")]
-        public List<Dish> GetAllDishAsync()
+        public async Task<List<Dish>> GetAllDishAsync()
         {
-            return service.GetAllDishAsync();
+            return await service.GetAllDishAsync();
         }
 
         [HttpPost("adddish")]

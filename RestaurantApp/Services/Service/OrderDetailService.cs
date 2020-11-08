@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace RestaurantApp.Services.Service
 {
@@ -20,19 +21,19 @@ namespace RestaurantApp.Services.Service
         public void DeleteById(string id)
         {
             var obj = context.OrderDetail.Where(x => x.OrderDetailId == id).FirstOrDefault();
-            obj.OrderDetailIsDeleted = 1;
+            obj.OrderDetailIsDeleted = true;
             context.OrderDetail.Update(obj);
             context.SaveChanges();
         }
 
-        public List<OrderDetail> GetAll()
+        public async Task<List<OrderDetail>> GetAll()
         {
-            return context.OrderDetail.Where(x => x.OrderDetailIsDeleted == 0).ToList();
+            return await context.OrderDetail.Where(x => !x.OrderDetailIsDeleted).ToListAsync();
         }
 
-        public List<OrderDetail> GetAllByOrderId(string orderid)
+        public async Task<List<OrderDetail>> GetAllByOrderId(string orderid)
         {
-            return context.OrderDetail.Where(x=>x.OrderId==orderid && x.OrderDetailIsDeleted==0).ToList();
+            return await context.OrderDetail.Where(x => x.OrderId == orderid && !x.OrderDetailIsDeleted).ToListAsync();
         }
 
         public OrderDetail GetById(string id)

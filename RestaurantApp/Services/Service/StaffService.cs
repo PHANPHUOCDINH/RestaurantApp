@@ -25,14 +25,14 @@ namespace RestaurantApp.Services.Service
         public void DeleteStaff(string id)
         {
             var obj = context.Staff.Where(x => x.StaffId == id).FirstOrDefault();
-            obj.StaffIsDeleted = 1;
+            obj.StaffIsDeleted = true;
             context.Staff.Update(obj);
             context.SaveChanges();
         }
 
-        public List<Staff> GetAll()
+        public async Task<List<Staff>> GetAll()
         {
-             return context.Staff.Where(x=>x.StaffIsDeleted==0).ToList(); 
+            return await context.Staff.Where(x => !x.StaffIsDeleted).ToListAsync();
         }
 
         public Staff GetStaffById(string id)
@@ -50,7 +50,7 @@ namespace RestaurantApp.Services.Service
         public void Insert(Staff staff)
         {
             staff.StaffId = Guid.NewGuid().ToString();
-            staff.StaffIsDeleted = 0;
+            staff.StaffIsDeleted = false;
             context.Staff.Add(staff);
             context.SaveChanges();
         }

@@ -15,8 +15,8 @@ namespace RestaurantApp.Models
 
         public string DishDescription { get; set; }
 
-        public int DishIsActive { get; set; }
+        public bool DishIsActive { get; set; }
 
-        public int DishIsDeleted { get; set; }
+        public bool DishIsDeleted { get; set; }
     }
 }
