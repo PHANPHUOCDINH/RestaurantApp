@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -11,7 +12,7 @@ namespace RestaurantApp.Models
 
         public string DishName { get; set; }
 
-        public string DishPrice { get; set; }
+        public decimal DishPrice { get; set; }
 
         public string DishDescription { get; set; }
 

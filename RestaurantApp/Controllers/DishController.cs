@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RestaurantApp.Models;
 using RestaurantApp.Services.IService;
 using System;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RestaurantApp.Controllers
 {
-    public class DishController:Controller
+    public class DishController : Controller
     {
         private readonly IDishService service;
         public DishController(IDishService service)
@@ -16,10 +17,11 @@ namespace RestaurantApp.Controllers
             this.service = service;
         }
 
+        //[Authorize]
         [HttpGet("getalldish")]
-        public async Task<List<Dish>> GetAllDishAsync()
+        public List<Dish> GetAllDishAsync()
         {
-            return await service.GetAllDishAsync();
+            return service.GetAllDishAsync();
         }
 
         [HttpPost("adddish")]
@@ -35,7 +37,7 @@ namespace RestaurantApp.Controllers
         }
 
         [HttpPost("updatedish")]
-        public void UpdateDish([FromBody]Dish dish)
+        public void UpdateDish([FromBody] Dish dish)
         {
             service.Update(dish);
         }
@@ -46,6 +48,12 @@ namespace RestaurantApp.Controllers
             service.DeleteById(id);
         }
 
-        
+        [HttpGet("alalalal")]
+        public async Task<IActionResult> GetAllAsync()
+        {
+            //return Ok(await service.GetAllAsync());
+            var a = HttpContext.RequestServices.GetService(typeof(ITableService)) as ITableService;
+            return Ok(await a.GetAllTableAsync());
+        }
     }
 }

@@ -18,9 +18,9 @@ namespace RestaurantApp.Services.Service
             this.context = context;
         }
 
-        public async Task<List<Dish>> GetAllDishAsync()
+        public List<Dish> GetAllDishAsync()
         {
-            return await context.Dish.Where(x => !x.DishIsDeleted).ToListAsync();
+            return context.Dish.ToList();
         }
 
         public Dish GetById(string id)
@@ -68,6 +68,11 @@ namespace RestaurantApp.Services.Service
             obj.DishPrice = dish.DishPrice;
             context.Dish.Update(obj);
             context.SaveChanges();
+        }
+
+        public async Task<List<Dish>> GetAllAsync()
+        {
+            return await context.Dish.Where(x => !x.DishIsDeleted).ToListAsync();
         }
     }
 }
