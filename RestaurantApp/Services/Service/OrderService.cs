@@ -27,13 +27,13 @@ namespace RestaurantApp.Services.Service
 
         public Order GetById(string id)
         {
-            var obj = context.Order.Where(x => x.OrderId == id).FirstOrDefault();
+            var obj = context.Order.Where(x => x.OrderId == id && !x.OrderIsDeleted).FirstOrDefault();
             return (Order)obj;
         }
 
         public async Task<List<Order>> GetAll()
         {
-            return await context.Order.ToListAsync();
+            return await context.Order.Where(x=>!x.OrderIsDeleted).ToListAsync();
         }
 
 

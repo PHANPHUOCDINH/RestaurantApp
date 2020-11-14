@@ -38,14 +38,15 @@ namespace RestaurantApp.Services.Service
 
         public OrderDetail GetById(string id)
         {
-            var obj = context.OrderDetail.Where(x => x.OrderDetailId == id ).FirstOrDefault();
+            var obj = context.OrderDetail.Where(x => x.OrderDetailId == id && !x.OrderDetailIsDeleted).FirstOrDefault();
             return (OrderDetail)obj;
          
         }
 
         public void Insert(OrderDetail orderdetail)
         {
-           // orderdetail.OrderDetailId = Guid.NewGuid().ToString();
+            // orderdetail.OrderDetailId = Guid.NewGuid().ToString();
+            orderdetail.OrderDetailIsDeleted = false;
             context.OrderDetail.Add(orderdetail);
             context.SaveChanges();
         }

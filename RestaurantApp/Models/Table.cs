@@ -14,5 +14,7 @@ namespace RestaurantApp.Models
         public int TableStatus { get; set; }
 
         public string TableIdOrderServing { get; set; }
+
+        public bool TableIsDeleted { get; set; }
     }
 }

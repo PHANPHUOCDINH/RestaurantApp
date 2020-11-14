@@ -37,13 +37,13 @@ namespace RestaurantApp.Services.Service
 
         public Staff GetStaffById(string id)
         {
-            var obj = context.Staff.Where(x => x.StaffId == id).FirstOrDefault();
+            var obj = context.Staff.Where(x => x.StaffId == id && !x.StaffIsDeleted).FirstOrDefault();
             return (Staff)obj;
         }
 
         public Staff GetStaffByUsername(string username)
         {
-            var obj = context.Staff.Where(x => x.StaffUsername == username).FirstOrDefault();
+            var obj = context.Staff.Where(x => x.StaffUsername == username && !x.StaffIsDeleted).FirstOrDefault();
             return (Staff)obj;
         }
 

@@ -25,12 +25,13 @@ namespace RestaurantApp.Services.Service
 
         public Dish GetById(string id)
         {
-            var obj = context.Dish.Where(x => x.DishId == id).FirstOrDefault();
+            var obj = context.Dish.Where(x => x.DishId == id && !x.DishIsDeleted).FirstOrDefault();
             return (Dish)obj;
         }
 
         public void Insert(Dish dish)
         {
+            dish.DishIsDeleted = false;
             dish.DishId = Guid.NewGuid().ToString();
             context.Dish.Add(dish);
             context.SaveChanges();
