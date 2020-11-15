@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RestaurantApp.Models;
+using RestaurantApp.Route;
 using RestaurantApp.Services.IService;
 using System;
 using System.Collections.Generic;
@@ -15,42 +17,51 @@ namespace RestaurantApp.Controllers
         {
             this.service = service;
         }
-        [HttpGet("getallorderdetail")]
+
+        [Authorize]
+        [HttpGet(ApiRoute.GetAllOrderDetail)]
         public async Task<List<OrderDetail>> GetAllOrderDetail()
         {
             return await service.GetAll();
         }
 
-        [HttpGet("getallorderdetailbyidorder/{id?}")]
+        [Authorize]
+        [HttpGet(ApiRoute.GetAllOrderDetailByIdOrder)]
         public async Task<List<OrderDetail>> GetAllOrderDetailByIdOrder(string id)
         {
             return await service.GetAllByOrderId(id);
         }
-        [HttpGet("getbyid/{id?}")]
+
+        [Authorize]
+        [HttpGet(ApiRoute.GetOrderDetailById)]
         public OrderDetail GetOrderDetailById(string id)
         {
             return service.GetById(id);
         }
 
-        [HttpPost("addorderdetail")]
+        [Authorize]
+        [HttpPost(ApiRoute.AddOrderDetail)]
         public void AddOrderDetail([FromBody] OrderDetail orderdetail)
         {
             service.Insert(orderdetail);
         }
 
-        [HttpPost("deleteorderdetail/{id?}")]
+        [Authorize]
+        [HttpPost(ApiRoute.DeleteOrderDetail)]
         public void DeleteOrderDetail(string id)
         {
             service.DeleteById(id);
         }
 
-        [HttpPost("updatecookrequest/{id?}/{cook_id?}/{starttime?}/{endtime?}")]
+        [Authorize]
+        [HttpPost(ApiRoute.UpdateCookRequest)]
         public void UpdateCookRequest(string id, string cook_id,DateTime starttime,DateTime endtime)
         {
             service.UpdateCookRequest(id, cook_id, starttime, endtime);
         }
 
-        [HttpPost("updatecookrequest/{id?}/{status?}")]
+        [Authorize]
+        [HttpPost(ApiRoute.UpdateStatus)]
         public void UpdateStatus(string id, string status)
         {
             service.UpdateStatus(id, status);

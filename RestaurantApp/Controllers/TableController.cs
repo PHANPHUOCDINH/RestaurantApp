@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using RestaurantApp.Models;
 using RestaurantApp.Route;
@@ -17,25 +18,27 @@ namespace RestaurantApp.Controllers
         {
             this.service = service;
         }
-        [HttpGet("getalltable")]
+
+        [Authorize]
+        [HttpGet(ApiRoute.GetAllTable)]
         public async Task<List<Table>> GetAllTableAsync()
         {
             return await service.GetAllTableAsync();
         }
-        
+
         //[HttpGet("test")]
         //public async Task<IActionResult> GetTests()
         //{
-            
+
         //    ITestService _service;
         //    var service = (ITestService)ServiceProvider.GetService(typeof(ITestService));
         //    return Ok(await _service.GetAllTestAsync());
         //} 
-
-        [HttpPost("updatetablestatus")]
+        [Authorize]
+        [HttpPost(ApiRoute.UpdateTableStatus)]
         public void UpdateTableStatus([FromBody] Table table)
         {
-            service.UpdateTableStatus(table);
+      //      service.UpdateTableStatus(table);
         }
     }
 }

@@ -10,13 +10,13 @@ namespace RestaurantApp.Services.IService
     {
         void Insert(Dish dish);
 
-        List<Dish> GetAllDishAsync();
+        Task<List<Dish>> GetAllDish();
 
         void Update(Dish dish);
 
         void DeleteById(string id);
 
         Dish GetById(string id);
-        Task<List<Dish>> GetAllAsync();
+        
     }
 }

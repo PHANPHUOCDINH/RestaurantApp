@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace RestaurantApp.Services.Service
 {
@@ -18,10 +18,7 @@ namespace RestaurantApp.Services.Service
             this.context = context;
         }
 
-        public List<Dish> GetAllDishAsync()
-        {
-            return context.Dish.ToList();
-        }
+        
 
         public Dish GetById(string id)
         {
@@ -70,9 +67,11 @@ namespace RestaurantApp.Services.Service
             context.SaveChanges();
         }
 
-        public async Task<List<Dish>> GetAllAsync()
+        public async Task<List<Dish>> GetAllDish()
         {
             return await context.Dish.Where(x => !x.DishIsDeleted).ToListAsync();
         }
+
+       
     }
 }

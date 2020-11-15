@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace RestaurantApp.Services.Service
 {
@@ -17,9 +17,16 @@ namespace RestaurantApp.Services.Service
         {
             this.context = context;
         }
-        public bool CheckLogIn(string username,string password)
+        public Staff CheckLogIn(string username,string password)
         {
-            return true;
+           // bool isSuccess = false;
+            Staff user = context.Staff.Where(x => !(x.StaffUsername != username)).FirstOrDefault();
+            if (user!=null && BCrypt.Net.BCrypt.Verify(password, user.StaffPassword))
+            {
+                return user;
+            }
+            else
+                return null;
         }
 
         public void DeleteStaff(string id)
@@ -69,5 +76,6 @@ namespace RestaurantApp.Services.Service
             context.SaveChanges();
 
         }
+
     }
 }

@@ -10,7 +10,7 @@ namespace RestaurantApp.Services.IService
     {
         void Insert(OrderDetail orderdetail);
 
-        Task<List<OrderDetail>> GetAll();
+        Task<List<OrderDetail>> GetAll(string cookId);
 
         Task<List<OrderDetail>> GetAllByOrderId(string orderid);
 

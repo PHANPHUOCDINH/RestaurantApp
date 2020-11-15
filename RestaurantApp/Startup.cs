@@ -17,6 +17,7 @@ using RestaurantApp.Services.IService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using RestaurantApp.Models;
 
 namespace RestaurantApp
 {
@@ -40,37 +41,15 @@ namespace RestaurantApp
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddScoped<ITestService, TestService>();
-            services.AddScoped<ITableService, TableService>();
             services.AddScoped<IDishService, DishService>();
+            services.AddScoped<ITableService, TableService>();
+
             services.AddScoped<IStaffService, StaffService>();
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IOrderDetailService, OrderDetailService>();
-            var sp = services.BuildServiceProvider();
 
-            //services.AddAuthentication(x =>
-            //{
-            //    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-            //    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-
-            //}).AddJwtBearer(x =>
-            //{
-            //    x.TokenValidationParameters = new TokenValidationParameters
-            //    {
-            //        ValidateIssuer = true,
-            //        ValidateAudience = true,
-            //        ValidateLifetime = false,
-            //        ValidateIssuerSigningKey = true,
-            //        ValidIssuer = Configuration["JwtToken:Issuer"],
-            //        ValidAudience = Configuration["JwtToken:Issuer"],
-            //        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JwtToken:SecretKey"]))
-            //    };
-            //});
-
-
-
-
-
-            
+            var jwtSettings = new JwtSettings();
+            Configuration.Bind(nameof(jwtSettings), jwtSettings);
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -82,9 +61,13 @@ namespace RestaurantApp
                 {
                     ValidateIssuer = true,
                     ValidateAudience = true,
-                    ValidateLifetime = false,
+                    ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JwtToken:SecretKey"]))
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Secret)),
+                    ValidIssuer = jwtSettings.Issuer,
+                    ValidAudience = jwtSettings.Issuer,
+                    //RequireExpirationTime=true,
+                    ClockSkew = TimeSpan.Zero
                 };
             });
         }

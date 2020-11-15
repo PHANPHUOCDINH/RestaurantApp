@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RestaurantApp.Models;
+using RestaurantApp.Route;
 using RestaurantApp.Services.IService;
 using System;
 using System.Collections.Generic;
@@ -16,31 +18,36 @@ namespace RestaurantApp.Controllers
             this.service = service;
         }
 
-        [HttpGet("getallorder")]
+        [Authorize]
+        [HttpGet(ApiRoute.GetAllOrderAsync)]
         public async Task<List<Order>> GetAllOrderAsync()
         {
             return await service.GetAll();
         }
 
-        [HttpGet("getorderbyid/{id?}")]
+        [Authorize]
+        [HttpGet(ApiRoute.GetOrderById)]
         public Order GetOrderById(string id)
         {
             return service.GetById(id);
         }
 
-        [HttpPost("addorder")]
+        [Authorize]
+        [HttpPost(ApiRoute.AddOrder)]
         public void AddOrder([FromBody] Order order)
         {
             service.Insert(order);
         }
 
-        [HttpPost("updateorder")]
+        [Authorize]
+        [HttpPost(ApiRoute.UpdateOrder)]
         public void UpdateOrder([FromBody] Order order)
         {
             service.Update(order);
         }
 
-        [HttpPost("deleteorder/{id?}")]
+        [Authorize]
+        [HttpPost(ApiRoute.DeleteOrder)]
         public void DeleteOrder(string id)
         {
             service.DeleteById(id);
