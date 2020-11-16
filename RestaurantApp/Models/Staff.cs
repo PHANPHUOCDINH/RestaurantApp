@@ -25,6 +25,8 @@ namespace RestaurantApp.Models
 
         public bool StaffIsDeleted { get; set; }
 
-        public string Token;
+        public string ExternalId { get; set; }
+        public string RefreshToken { get; set; }
+        public DateTime? RefreshTokenExpiryTime { get; set; }
     }
 }

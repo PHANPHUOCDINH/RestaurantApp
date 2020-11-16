@@ -15,7 +15,7 @@ namespace RestaurantApp.Models
 
         public string CookId { get; set; }
 
-        public string OrderDetailStatus { get; set; }
+        public int OrderDetailStatus { get; set; }
 
         public DateTime? OrderDetailStarttime { get; set; }
 

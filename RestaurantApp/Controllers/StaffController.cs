@@ -30,8 +30,6 @@ namespace RestaurantApp.Controllers
         [HttpPost(ApiRoute.InsertStaff)]
         public void InsertStaff([FromBody]Staff staff)
         {
-            string passwordHash = BCrypt.Net.BCrypt.HashPassword(staff.StaffPassword, 12);
-            staff.StaffPassword = passwordHash;
             service.Insert(staff);
         }
 

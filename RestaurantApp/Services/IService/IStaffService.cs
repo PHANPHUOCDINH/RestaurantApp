@@ -18,7 +18,7 @@ namespace RestaurantApp.Services.IService
 
         Staff GetStaffByUsername(string username);
 
-        Staff CheckLogIn(string username, string password);
+        bool CheckLogIn(string username, string password);
 
         void DeleteStaff(string id);
 

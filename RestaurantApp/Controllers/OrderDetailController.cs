@@ -20,9 +20,9 @@ namespace RestaurantApp.Controllers
 
         [Authorize]
         [HttpGet(ApiRoute.GetAllOrderDetail)]
-        public async Task<List<OrderDetail>> GetAllOrderDetail()
+        public async Task<List<OrderDetail>> GetAllOrderDetail(string cookid)
         {
-            return await service.GetAll();
+            return await service.GetAll(cookid);
         }
 
         [Authorize]
@@ -41,7 +41,7 @@ namespace RestaurantApp.Controllers
 
         [Authorize]
         [HttpPost(ApiRoute.AddOrderDetail)]
-        public void AddOrderDetail([FromBody] OrderDetail orderdetail)
+        public void AddOrderDetail([FromBody]OrderDetail orderdetail)
         {
             service.Insert(orderdetail);
         }
@@ -62,7 +62,7 @@ namespace RestaurantApp.Controllers
 
         [Authorize]
         [HttpPost(ApiRoute.UpdateStatus)]
-        public void UpdateStatus(string id, string status)
+        public void UpdateStatus(string id, int status)
         {
             service.UpdateStatus(id, status);
         }

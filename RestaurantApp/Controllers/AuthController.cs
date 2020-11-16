@@ -2,12 +2,14 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using RestaurantApp.Data;
 using RestaurantApp.Models;
 using RestaurantApp.Services.IService;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,26 +18,56 @@ namespace RestaurantApp.Controllers
     public class AuthController : Controller
     {
         private readonly IConfiguration _config;
-        private readonly IStaffService _service;
-        public AuthController(IConfiguration config, IStaffService service)
+       // private readonly ApplicationDbContext _context;
+       // private readonly ITokenService _tokenservice;
+        private readonly IStaffService _staffservice;
+        public AuthController(IConfiguration config,IStaffService staffService)
         {
             _config = config;
-            _service = service;
+            _staffservice = staffService;
         }
 
+        //[HttpPost, Route("login")]
+        //public IActionResult Login([FromBody] Staff loginModel)
+        //{
+        //    if (loginModel == null)
+        //    {
+        //        return BadRequest("Invalid client request");
+        //    }
+        //    Staff user = new Staff();
+        //    //Staff user = _staffservice.CheckLogIn(loginModel.StaffUsername, loginModel.StaffPassword);
+        //    if (loginModel.StaffPassword != "admin"  || loginModel.StaffUsername !="admin")
+        //    {
+        //        return Unauthorized();
+        //    }
+        //    var claims = new List<Claim>
+        //{
+        //    new Claim(ClaimTypes.Name, loginModel.StaffUsername),
+        //    new Claim(ClaimTypes.Role, "Manager")
+        //};
+        //    var accessToken = _tokenservice.GenerateAccessToken(claims);
+        //    var refreshToken = _tokenservice.GenerateRefreshToken();
+        //    user.RefreshToken = refreshToken;
+        //    user.RefreshTokenExpiryTime = DateTime.Now.AddDays(7);
+
+        //  //  _context.SaveChanges();
+        //    return Ok(new
+        //    {
+        //        Token = accessToken,
+        //        RefreshToken = refreshToken
+        //    });
+        //}
         //public AuthController(IStaffService service)
         //{
         //    _service = service;
         //}
 
-
-        [AllowAnonymous]
         [HttpPost("signin")]
         public IActionResult CreateToken([FromBody] Staff login)
         {
             if (login == null) return Unauthorized();
             string tokenString = string.Empty;
-            bool validUser = Authenticate(login.StaffUsername,login.StaffPassword);
+            bool validUser = Authenticate(login.StaffUsername, login.StaffPassword);
             if (validUser)
             {
                 tokenString = BuildToken();
@@ -47,6 +79,7 @@ namespace RestaurantApp.Controllers
             return Ok(new { Token = tokenString });
         }
 
+
         private string BuildToken()
         {
             var jwtSettings = new JwtSettings();
@@ -57,23 +90,24 @@ namespace RestaurantApp.Controllers
             var token = new JwtSecurityToken(
                 jwtSettings.Issuer,
                 jwtSettings.Issuer,
-                expires: DateTime.UtcNow.AddMinutes(1),
+                expires: DateTime.UtcNow.AddMinutes(10),
                 signingCredentials: creds);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-        private bool Authenticate(string username,string password)
+        private bool Authenticate(string username, string password)
         {
-            Staff user = _service.CheckLogIn(username,password);
-            if (user != null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }    
+            //Staff user = _staffservice.CheckLogIn(username, password);
+            //if (user != null)
+            //{
+            //    return true;
+            //}
+            //else
+            //{
+            //    return false;
+            //}
+            return _staffservice.CheckLogIn(username, password);
         }
 
         public class LoginModel

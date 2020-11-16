@@ -21,5 +21,7 @@ namespace RestaurantApp.Data
         public DbSet<Staff> Staff { get; set; }
         public DbSet<Order> Order { get; set; }
         public DbSet<OrderDetail> OrderDetail { get; set; }
+
+        
     }
 }

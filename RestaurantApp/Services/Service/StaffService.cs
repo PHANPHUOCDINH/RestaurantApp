@@ -17,16 +17,22 @@ namespace RestaurantApp.Services.Service
         {
             this.context = context;
         }
-        public Staff CheckLogIn(string username,string password)
+        public bool CheckLogIn(string username,string password)
         {
-           // bool isSuccess = false;
-            Staff user = context.Staff.Where(x => !(x.StaffUsername != username)).FirstOrDefault();
-            if (user!=null && BCrypt.Net.BCrypt.Verify(password, user.StaffPassword))
+            // bool isSuccess = false;
+            //Staff user = context.Staff.Where(x => !(x.StaffUsername != username)).FirstOrDefault();
+            //if (user!=null && BCrypt.Net.BCrypt.Verify(password, user.StaffPassword))
+            //{
+            //    return user;
+            //}
+            //else
+            //    return null;
+            if (username == "admin" && password == "admin")
             {
-                return user;
+                return true;
             }
             else
-                return null;
+                return false ;
         }
 
         public void DeleteStaff(string id)
@@ -56,6 +62,8 @@ namespace RestaurantApp.Services.Service
 
         public void Insert(Staff staff)
         {
+            //string passwordHash = BCrypt.Net.BCrypt.HashPassword(staff.StaffPassword, 12);
+            //staff.StaffPassword = passwordHash;
             staff.StaffId = Guid.NewGuid().ToString();
             staff.StaffIsDeleted = false;
             context.Staff.Add(staff);

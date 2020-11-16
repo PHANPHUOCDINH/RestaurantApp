@@ -45,7 +45,7 @@ namespace RestaurantApp.Services.Service
 
         public void Insert(OrderDetail orderdetail)
         {
-            // orderdetail.OrderDetailId = Guid.NewGuid().ToString();
+            orderdetail.OrderDetailId = Guid.NewGuid().ToString();
             orderdetail.OrderDetailIsDeleted = false;
             context.OrderDetail.Add(orderdetail);
             context.SaveChanges();
@@ -61,7 +61,7 @@ namespace RestaurantApp.Services.Service
             context.SaveChanges();
         }
 
-        public void UpdateStatus(string id,string status)
+        public void UpdateStatus(string id,int status)
         {
             var obj = context.OrderDetail.Where(x => x.OrderDetailId == id).FirstOrDefault();
             obj.OrderDetailStatus = status;

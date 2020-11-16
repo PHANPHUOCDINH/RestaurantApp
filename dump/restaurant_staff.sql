@@ -28,11 +28,13 @@ CREATE TABLE `staff` (
   `StaffVisa` varchar(5) DEFAULT NULL,
   `StaffName` varchar(100) DEFAULT NULL,
   `StaffUsername` varchar(50) DEFAULT NULL,
-  `StaffPassword` varchar(50) DEFAULT NULL,
+  `StaffPassword` varchar(100) DEFAULT NULL,
   `StaffBirthdate` datetime DEFAULT NULL,
   `StaffSalary` decimal(15,2) DEFAULT NULL,
   `StaffIsDeleted` tinyint DEFAULT NULL,
   `ExternalId` varchar(50) DEFAULT NULL,
+  `RefreshToken` longtext,
+  `RefreshTokenExpiryTime` datetime DEFAULT NULL,
   PRIMARY KEY (`StaffId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -43,7 +45,7 @@ CREATE TABLE `staff` (
 
 LOCK TABLES `staff` WRITE;
 /*!40000 ALTER TABLE `staff` DISABLE KEYS */;
-INSERT INTO `staff` VALUES ('aaa',NULL,NULL,'NguyenVanB',NULL,NULL,NULL,NULL,1,NULL),('da0df4dd-34ba-48ac-a3c5-1203d6ed224c',NULL,NULL,'Nguyen Van H','test',NULL,NULL,NULL,0,NULL);
+INSERT INTO `staff` VALUES ('9f22accb-c222-4088-8c14-c00e47bdd612',NULL,NULL,NULL,NULL,'6789',NULL,NULL,0,NULL,NULL,NULL),('staff001','role01',NULL,NULL,'admin','admin',NULL,NULL,NULL,NULL,NULL,NULL),('staff002','role02',NULL,NULL,'admin1','admin1',NULL,NULL,NULL,NULL,NULL,NULL),('staff003','role01',NULL,NULL,'admin3','admin3',NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `staff` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-14 12:08:27
+-- Dump completed on 2020-11-16  3:55:41

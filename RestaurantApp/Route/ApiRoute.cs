@@ -19,7 +19,7 @@ namespace RestaurantApp.Route
         public const string AddOrder = "addorder";
         public const string UpdateOrder = "updateorder";
         public const string DeleteOrder = "deleteorder/{id?}";
-        public const string GetAllOrderDetail = "getallorderdetail";
+        public const string GetAllOrderDetail = "getallorderdetail/{cookid?}";
         public const string GetAllOrderDetailByIdOrder = "getallorderdetailbyidorder/{id?}";
         public const string GetOrderDetailById = "getbyid/{id?}";
         public const string AddOrderDetail = "addorderdetail";

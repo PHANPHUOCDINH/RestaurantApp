@@ -16,7 +16,7 @@ namespace RestaurantApp.Services.IService
 
         void UpdateCookRequest(string id,string cook_id,DateTime starttime,DateTime endtime);
 
-        void UpdateStatus(string id,string status);
+        void UpdateStatus(string id,int status);
 
         void DeleteById(string id);
 

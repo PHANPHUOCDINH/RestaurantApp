@@ -47,6 +47,7 @@ namespace RestaurantApp
             services.AddScoped<IStaffService, StaffService>();
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IOrderDetailService, OrderDetailService>();
+            services.AddScoped<ITokenService, TokenService>();
 
             var jwtSettings = new JwtSettings();
             Configuration.Bind(nameof(jwtSettings), jwtSettings);
