@@ -27,7 +27,7 @@ CREATE TABLE `table` (
   `TableName` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `TableIdOrderServing` varchar(50) DEFAULT NULL,
   `TableStatus` int DEFAULT NULL,
-  `TableIsDeleted` tinyint DEFAULT NULL,
+  `TableIsActive` tinyint NOT NULL,
   PRIMARY KEY (`TableId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -38,7 +38,7 @@ CREATE TABLE `table` (
 
 LOCK TABLES `table` WRITE;
 /*!40000 ALTER TABLE `table` DISABLE KEYS */;
-INSERT INTO `table` VALUES ('table01','Ban 1','higy',2,0),('table02','Ban 2',NULL,1,0),('table03','Ban 3',NULL,1,0);
+INSERT INTO `table` VALUES ('table01','Ban 1','higy',3,0),('table02','Ban 2',NULL,1,0),('table03','Ban 3',NULL,1,0);
 /*!40000 ALTER TABLE `table` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-16  3:55:41
+-- Dump completed on 2020-11-17 19:59:07

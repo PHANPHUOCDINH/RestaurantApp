@@ -28,7 +28,6 @@ CREATE TABLE `dish` (
   `DishPrice` decimal(15,2) NOT NULL,
   `DishDescription` varchar(200) DEFAULT NULL,
   `DishIsActive` tinyint(1) NOT NULL,
-  `DishIsDeleted` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`DishId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -39,7 +38,7 @@ CREATE TABLE `dish` (
 
 LOCK TABLES `dish` WRITE;
 /*!40000 ALTER TABLE `dish` DISABLE KEYS */;
-INSERT INTO `dish` VALUES ('dish01','Com chien',53000.00,NULL,1,0),('dish02','Ga nuong',2000.00,NULL,1,0),('dish03','Mi y',3000.00,NULL,1,0);
+INSERT INTO `dish` VALUES ('40547259-9c28-40fc-a80b-97985f5adffc','Cà ri',0.00,NULL,0),('dish01','Cơm xào',0.00,NULL,0),('dish02','Ga nuong',2000.00,NULL,1),('dish03','Mi y',3000.00,NULL,1);
 /*!40000 ALTER TABLE `dish` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-16  3:55:41
+-- Dump completed on 2020-11-17 19:59:07

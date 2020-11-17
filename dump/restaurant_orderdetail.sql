@@ -41,7 +41,7 @@ CREATE TABLE `orderdetail` (
 
 LOCK TABLES `orderdetail` WRITE;
 /*!40000 ALTER TABLE `orderdetail` DISABLE KEYS */;
-INSERT INTO `orderdetail` VALUES ('53853efe-d6b3-4f27-8b33-79c748478133','dish02','order01',NULL,0,NULL,NULL,0),('66f1c717-ad41-46e9-a2f3-d958d65acc83','dish03','order02',NULL,1,NULL,NULL,0),('a0e5c8a1-428d-4b72-b274-fc694f12a4bd','dish01','order01',NULL,0,NULL,NULL,0),('a505459b-58c3-4e10-9d6a-863ae38a16ee','dish02','order01',NULL,0,NULL,NULL,0);
+INSERT INTO `orderdetail` VALUES ('08deb388-e122-474b-83d3-1f9a7b677e5f','dish01','order01','staff001',0,'00:00:00','00:00:00',1),('53853efe-d6b3-4f27-8b33-79c748478133','dish02','order01','staff001',0,NULL,NULL,0),('66f1c717-ad41-46e9-a2f3-d958d65acc83','dish03','order02','staf002',1,NULL,NULL,0),('a0e5c8a1-428d-4b72-b274-fc694f12a4bd','dish01','order01','staff001',0,NULL,NULL,0),('a505459b-58c3-4e10-9d6a-863ae38a16ee','dish02','order01','staff003',1,NULL,NULL,0);
 /*!40000 ALTER TABLE `orderdetail` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-16  3:55:41
+-- Dump completed on 2020-11-17 19:59:07
