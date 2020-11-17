@@ -1,4 +1,6 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using RestaurantApp.Models;
 using RestaurantApp.Services.IService;
 using System;
 using System.Collections.Generic;
@@ -13,19 +15,27 @@ namespace RestaurantApp.Services.Service
 {
     public class TokenService : ITokenService
     {
-        public string GenerateAccessToken(IEnumerable<Claim> claims)
+        private readonly IConfiguration _config;
+
+        public TokenService(IConfiguration config)
         {
-            var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
-            var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
-            var tokeOptions = new JwtSecurityToken(
-                issuer: "http://localhost:5001",
-                audience: "http://localhost:5001",
-                claims: claims,
-                expires: DateTime.Now.AddMinutes(1),
-                signingCredentials: signinCredentials
-            );
-            var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
-            return tokenString;
+            _config = config;
+        }
+        public string GenerateAccessToken(IEnumerable<Claim> claim)
+        {
+            var jwtSettings = new JwtSettings();
+            _config.Bind(nameof(jwtSettings), jwtSettings);
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Secret));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var token = new JwtSecurityToken(
+                jwtSettings.Issuer,
+                jwtSettings.Issuer,
+                claims:claim,
+                expires: DateTime.UtcNow.AddMinutes(1),
+                signingCredentials: creds);
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
         }
         public string GenerateRefreshToken()
         {
@@ -38,12 +48,14 @@ namespace RestaurantApp.Services.Service
         }
         public ClaimsPrincipal GetPrincipalFromExpiredToken(string token)
         {
+            var jwtSettings = new JwtSettings();
+            _config.Bind(nameof(jwtSettings), jwtSettings);
             var tokenValidationParameters = new TokenValidationParameters
             {
                 ValidateAudience = false, //you might want to validate the audience and issuer depending on your use case
                 ValidateIssuer = false,
                 ValidateIssuerSigningKey = true,
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345")),
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Secret)),
                 ValidateLifetime = false //here we are saying that we don't care about the token's expiration date
             };
             var tokenHandler = new JwtSecurityTokenHandler();

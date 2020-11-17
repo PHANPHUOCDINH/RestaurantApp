@@ -14,9 +14,9 @@ namespace RestaurantApp.Services.IService
 
         Task<List<OrderDetail>> GetAllByOrderId(string orderid);
 
-        void UpdateCookRequest(string id,string cook_id,DateTime starttime,DateTime endtime);
+        void UpdateCookRequest(OrderDetail od);
 
-        void UpdateStatus(string id,int status);
+        void UpdateStatus(OrderDetail od);
 
         void DeleteById(string id);
 

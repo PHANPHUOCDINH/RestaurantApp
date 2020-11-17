@@ -23,10 +23,12 @@ namespace RestaurantApp.Models
 
         public string StaffSalary { get; set; }
 
-        public bool StaffIsDeleted { get; set; }
+        public bool StaffIsActive { get; set; }
 
         public string ExternalId { get; set; }
         public string RefreshToken { get; set; }
-        public DateTime? RefreshTokenExpiryTime { get; set; }
+
+        public string AccessToken { get; set; }
     }
+    
 }

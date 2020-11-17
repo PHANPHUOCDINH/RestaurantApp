@@ -18,6 +18,5 @@ namespace RestaurantApp.Models
 
         public bool DishIsActive { get; set; }
 
-        public bool DishIsDeleted { get; set; }
     }
 }

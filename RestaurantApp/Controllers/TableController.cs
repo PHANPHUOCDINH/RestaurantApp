@@ -35,10 +35,10 @@ namespace RestaurantApp.Controllers
         //    return Ok(await _service.GetAllTestAsync());
         //} 
         [Authorize]
-        [HttpPost(ApiRoute.UpdateTableStatus)]
+        [HttpPut(ApiRoute.UpdateTableStatus)]
         public void UpdateTableStatus([FromBody] Table table)
         {
-      //      service.UpdateTableStatus(table);
+            service.UpdateTableStatus(table);
         }
     }
 }

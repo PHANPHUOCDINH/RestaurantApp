@@ -40,14 +40,14 @@ namespace RestaurantApp.Controllers
         }
 
         [Authorize]
-        [HttpPost(ApiRoute.UpdateOrder)]
+        [HttpPut(ApiRoute.UpdateOrder)]
         public void UpdateOrder([FromBody] Order order)
         {
             service.Update(order);
         }
 
         [Authorize]
-        [HttpPost(ApiRoute.DeleteOrder)]
+        [HttpDelete(ApiRoute.DeleteOrder)]
         public void DeleteOrder(string id)
         {
             service.DeleteById(id);

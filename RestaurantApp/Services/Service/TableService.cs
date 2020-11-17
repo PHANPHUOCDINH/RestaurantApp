@@ -18,7 +18,7 @@ namespace RestaurantApp.Services.Service
         }
         public async Task<List<Table>> GetAllTableAsync()
         {
-            return await context.Table.Where(x=>!x.TableIsDeleted).ToListAsync();
+            return await context.Table.Where(x=>!x.TableIsActive).ToListAsync();
         }
 
         public void UpdateTableStatus(Table table)

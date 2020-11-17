@@ -51,20 +51,20 @@ namespace RestaurantApp.Services.Service
             context.SaveChanges();
         }
 
-        public void UpdateCookRequest(string id,string cook_id, DateTime starttime, DateTime endtime)
+        public void UpdateCookRequest(OrderDetail od)
         {
-            var obj = context.OrderDetail.Where(x => x.OrderDetailId == id).FirstOrDefault();
-            obj.CookId = cook_id;
-            obj.OrderDetailStarttime = starttime;
-            obj.OrderDetailEndtime = endtime;
+            var obj = context.OrderDetail.Where(x => x.OrderDetailId == od.OrderDetailId).FirstOrDefault();
+            obj.CookId = od.CookId;
+            obj.OrderDetailStarttime = od.OrderDetailStarttime;
+            obj.OrderDetailEndtime = od.OrderDetailEndtime;
             context.OrderDetail.Update(obj);
             context.SaveChanges();
         }
 
-        public void UpdateStatus(string id,int status)
+        public void UpdateStatus(OrderDetail od)
         {
-            var obj = context.OrderDetail.Where(x => x.OrderDetailId == id).FirstOrDefault();
-            obj.OrderDetailStatus = status;
+            var obj = context.OrderDetail.Where(x => x.OrderDetailId == od.OrderDetailId).FirstOrDefault();
+            obj.OrderDetailStatus = od.OrderDetailStatus;
             context.OrderDetail.Update(obj);
             context.SaveChanges();
         }

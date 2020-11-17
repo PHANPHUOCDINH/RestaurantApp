@@ -19,7 +19,7 @@ namespace RestaurantApp.Controllers
             this.service = service;
         }
 
-        [Authorize]
+       // [Authorize]
         [HttpGet(ApiRoute.GetAllStaffAsync)]
         public async Task<List<Staff>> GetAllStaffAsync()
         {
@@ -34,7 +34,7 @@ namespace RestaurantApp.Controllers
         }
 
         [Authorize]
-        [HttpPost(ApiRoute.DeleteStaff)]
+        [HttpDelete(ApiRoute.DeleteStaff)]
         public void DeleteStaff(string id)
         {
             service.DeleteStaff(id);
@@ -55,7 +55,7 @@ namespace RestaurantApp.Controllers
         }
 
         [Authorize]
-        [HttpPost(ApiRoute.UpdateStaff)]
+        [HttpPut(ApiRoute.UpdateStaff)]
         public void UpdateStaff([FromBody] Staff staff)
         {
             service.Update(staff);

@@ -27,9 +27,9 @@ namespace RestaurantApp.Controllers
 
         [Authorize]
         [HttpGet(ApiRoute.GetAllOrderDetailByIdOrder)]
-        public async Task<List<OrderDetail>> GetAllOrderDetailByIdOrder(string id)
+        public async Task<List<OrderDetail>> GetAllOrderDetailByIdOrder(string orderid)
         {
-            return await service.GetAllByOrderId(id);
+            return await service.GetAllByOrderId(orderid);
         }
 
         [Authorize]
@@ -47,24 +47,24 @@ namespace RestaurantApp.Controllers
         }
 
         [Authorize]
-        [HttpPost(ApiRoute.DeleteOrderDetail)]
+        [HttpDelete(ApiRoute.DeleteOrderDetail)]
         public void DeleteOrderDetail(string id)
         {
             service.DeleteById(id);
         }
 
         [Authorize]
-        [HttpPost(ApiRoute.UpdateCookRequest)]
-        public void UpdateCookRequest(string id, string cook_id,DateTime starttime,DateTime endtime)
+        [HttpPut(ApiRoute.UpdateCookRequest)]
+        public void UpdateCookRequest([FromBody]OrderDetail od)
         {
-            service.UpdateCookRequest(id, cook_id, starttime, endtime);
+            service.UpdateCookRequest(od);
         }
 
-        [Authorize]
-        [HttpPost(ApiRoute.UpdateStatus)]
-        public void UpdateStatus(string id, int status)
+        //[Authorize]
+        [HttpPut(ApiRoute.UpdateStatus)]
+        public void UpdateStatus([FromBody] OrderDetail od)
         {
-            service.UpdateStatus(id, status);
+            service.UpdateStatus(od);
         }
     }
 }

@@ -12,6 +12,8 @@ namespace RestaurantApp.Services.IService
 
         Task<List<Order>> GetAll();
 
+
+
         Order GetById(string id);
 
         void Update(Order order);

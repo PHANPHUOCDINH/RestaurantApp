@@ -22,30 +22,30 @@ namespace RestaurantApp.Controllers
 
         [HttpPost]
         [Route("refresh")]
-        public IActionResult Refresh(Token tokenApiModel)
+        public IActionResult Refresh([FromBody]Token tokenApiModel)
         {
-            //if (tokenApiModel is null)
-            //{
+            if (tokenApiModel is null)
+            {
                 return BadRequest("Invalid client request");
-            //}
-            //string accessToken = tokenApiModel.AccessToken;
-            //string refreshToken = tokenApiModel.RefreshToken;
-            //var principal = tokenService.GetPrincipalFromExpiredToken(accessToken);
-            //var username = principal.Identity.Name; //this is mapped to the Name claim by default
-            //var user = _context.Staff.SingleOrDefault(u => u.StaffUsername == username);
-            //if (user == null || user.RefreshToken != refreshToken || user.RefreshTokenExpiryTime <= DateTime.Now)
-            //{
-            //    return BadRequest("Invalid client request");
-            //}
-            //var newAccessToken = tokenService.GenerateAccessToken(principal.Claims);
-            //var newRefreshToken = tokenService.GenerateRefreshToken();
-            //user.RefreshToken = newRefreshToken;
-            //_context.SaveChanges();
-            //return new ObjectResult(new
-            //{
-            //    accessToken = newAccessToken,
-            //    refreshToken = newRefreshToken
-            //});
+            }
+            string accessToken = tokenApiModel.AccessToken;
+            string refreshToken = tokenApiModel.RefreshToken;
+            var principal = tokenService.GetPrincipalFromExpiredToken(accessToken);
+            var username = principal.Identity.Name;
+            var user = _context.Staff.SingleOrDefault(u => u.StaffUsername == username);
+            if (user == null || user.RefreshToken != refreshToken)
+            {
+                return BadRequest("Invalid client request zz");
+            }
+            var newAccessToken = tokenService.GenerateAccessToken(principal.Claims);
+            var newRefreshToken = tokenService.GenerateRefreshToken();
+            user.RefreshToken = newRefreshToken;
+            _context.SaveChanges();
+            return new ObjectResult(new
+            {
+                accessToken = newAccessToken,
+                refreshToken = newRefreshToken
+            });
         }
 
         [HttpPost, Authorize]
@@ -55,7 +55,7 @@ namespace RestaurantApp.Controllers
             var username = User.Identity.Name;
             var user = _context.Staff.SingleOrDefault(u => u.StaffUsername == username);
             if (user == null) return BadRequest();
-         //   user.RefreshToken = null;
+            //   user.RefreshToken = null;
             _context.SaveChanges();
             return NoContent();
         }

@@ -40,14 +40,14 @@ namespace RestaurantApp.Controllers
         }
 
         [Authorize]
-        [HttpPost(ApiRoute.UpdateDish)]
+        [HttpPut(ApiRoute.UpdateDish)]
         public void UpdateDish([FromBody] Dish dish)
         {
             service.Update(dish);
         }
 
         [Authorize]
-        [HttpPost(ApiRoute.DeleteDish)]
+        [HttpDelete(ApiRoute.DeleteDish)]
         public void DeleteDish(string id)
         {
             service.DeleteById(id);

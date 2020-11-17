@@ -8,7 +8,7 @@ namespace RestaurantApp.Services.IService
 {
     public interface ITokenService
     {
-        string GenerateAccessToken(IEnumerable<Claim> claims);
+        string GenerateAccessToken(IEnumerable<Claim> claim);
         string GenerateRefreshToken();
         ClaimsPrincipal GetPrincipalFromExpiredToken(string token);
     }

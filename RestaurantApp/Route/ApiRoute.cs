@@ -7,30 +7,30 @@ namespace RestaurantApp.Route
 {
     public class ApiRoute
     {
-        public const string GetAllTable = "getalltable";
-        public const string UpdateTableStatus = "updatetablestatus";
-        public const string GetAllDishAsync = "getalldish";
-        public const string AddDish = "adddish";
-        public const string GetDishById = "getdishbyid/{id?}";
-        public const string UpdateDish = "updatedish";
-        public const string DeleteDish = "deletedish/{id?}";
-        public const string GetAllOrderAsync = "getallorder";
-        public const string GetOrderById = "getorderbyid/{id?}";
-        public const string AddOrder = "addorder";
-        public const string UpdateOrder = "updateorder";
-        public const string DeleteOrder = "deleteorder/{id?}";
-        public const string GetAllOrderDetail = "getallorderdetail/{cookid?}";
-        public const string GetAllOrderDetailByIdOrder = "getallorderdetailbyidorder/{id?}";
-        public const string GetOrderDetailById = "getbyid/{id?}";
-        public const string AddOrderDetail = "addorderdetail";
-        public const string DeleteOrderDetail = "deleteorderdetail/{id?}";
-        public const string UpdateCookRequest = "updatecookrequest/{id?}/{cook_id?}/{starttime?}/{endtime?}";
-        public const string UpdateStatus = "updatecookrequest/{id?}/{status?}";
-        public const string GetAllStaffAsync = "getallstaff";
-        public const string InsertStaff = "addstaff";
-        public const string DeleteStaff = "deletestaff/{id?}";
-        public const string GetById = "getstaffbyid/{id?}";
-        public const string GetByUsername = "getstaffbyusername/{username?}";
-        public const string UpdateStaff = "updatestaff";
+        public const string GetAllTable = "table/getall";
+        public const string UpdateTableStatus = "table/updatestatus";
+        public const string GetAllDishAsync = "dish/getall";
+        public const string AddDish = "dish/add";
+        public const string GetDishById = "dish/{id}";
+        public const string UpdateDish = "dish/update";
+        public const string DeleteDish = "dish/{id}";
+        public const string GetAllOrderAsync = "order/getall";
+        public const string GetOrderById = "order/{id}";
+        public const string AddOrder = "order/add";
+        public const string UpdateOrder = "order/update";
+        public const string DeleteOrder = "order/{id?}";
+        public const string GetAllOrderDetail = "orderdetail/{cookid}";
+        public const string GetAllOrderDetailByIdOrder = "orderdetail/byorder/{orderid}";
+        public const string GetOrderDetailById = "orderdetail/byid/{id}";
+        public const string AddOrderDetail = "orderdetail/add";
+        public const string DeleteOrderDetail = "orderdetail/{id}";
+        public const string UpdateCookRequest = "orderdetail/updatecookrequest";
+        public const string UpdateStatus = "orderdetail/updatestatus";
+        public const string GetAllStaffAsync = "staff/getall";
+        public const string InsertStaff = "staff/add";
+        public const string DeleteStaff = "staff/{id}";
+        public const string GetById = "staff/{id}";
+        public const string GetByUsername = "staff/byusername/{username}";
+        public const string UpdateStaff = "staff/update";
     }
 }
