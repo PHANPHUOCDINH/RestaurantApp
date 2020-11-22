@@ -32,5 +32,6 @@ namespace RestaurantApp.Route
         public const string GetById = "staff/{id}";
         public const string GetByUsername = "staff/byusername/{username}";
         public const string UpdateStaff = "staff/update";
+        public const string Top10BestSeller = "report/{month}/{year}";
     }
 }

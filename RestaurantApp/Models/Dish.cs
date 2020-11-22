@@ -8,6 +8,10 @@ namespace RestaurantApp.Models
 {
     public class Dish
     {
+        public Dish()
+        {
+            num = 0;
+        }
         public string DishId { get; set; }
 
         public string DishName { get; set; }
@@ -17,6 +21,7 @@ namespace RestaurantApp.Models
         public string DishDescription { get; set; }
 
         public bool DishIsActive { get; set; }
-
+        
+        public int num { get; set; }
     }
 }

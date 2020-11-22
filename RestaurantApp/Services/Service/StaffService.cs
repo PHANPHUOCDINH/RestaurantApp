@@ -38,25 +38,25 @@ namespace RestaurantApp.Services.Service
         public void DeleteStaff(string id)
         {
             var obj = context.Staff.Where(x => x.StaffId == id).FirstOrDefault();
-            obj.StaffIsActive = true;
+            obj.StaffIsActive = false;
             context.Staff.Update(obj);
             context.SaveChanges();
         }
 
         public async Task<List<Staff>> GetAll()
         {
-            return await context.Staff.Where(x => !x.StaffIsActive).ToListAsync();
+            return await context.Staff.Where(x => x.StaffIsActive).ToListAsync();
         }
 
         public Staff GetStaffById(string id)
         {
-            var obj = context.Staff.Where(x => x.StaffId == id && !x.StaffIsActive).FirstOrDefault();
+            var obj = context.Staff.Where(x => x.StaffId == id && x.StaffIsActive).FirstOrDefault();
             return (Staff)obj;
         }
 
         public Staff GetStaffByUsername(string username)
         {
-            var obj = context.Staff.Where(x => x.StaffUsername == username && !x.StaffIsActive).FirstOrDefault();
+            var obj = context.Staff.Where(x => x.StaffUsername == username && x.StaffIsActive).FirstOrDefault();
             return (Staff)obj;
         }
 
@@ -65,7 +65,7 @@ namespace RestaurantApp.Services.Service
             //string passwordHash = BCrypt.Net.BCrypt.HashPassword(staff.StaffPassword, 12);
             //staff.StaffPassword = passwordHash;
             staff.StaffId = Guid.NewGuid().ToString();
-            staff.StaffIsActive = false;
+            staff.StaffIsActive = true;
             context.Staff.Add(staff);
             context.SaveChanges();
         }

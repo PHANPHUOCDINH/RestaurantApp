@@ -16,6 +16,7 @@ namespace RestaurantApp.Controllers
         public DishController(IDishService service)
         {
             this.service = service;
+            
         }
 
         [Authorize]

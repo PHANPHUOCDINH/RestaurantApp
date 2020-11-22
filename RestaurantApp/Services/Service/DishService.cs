@@ -22,7 +22,7 @@ namespace RestaurantApp.Services.Service
 
         public Dish GetById(string id)
         {
-            var obj = context.Dish.Where(x => x.DishId == id && !x.DishIsActive).FirstOrDefault();
+            var obj = context.Dish.Where(x => x.DishId == id && x.DishIsActive).FirstOrDefault();
             return (Dish)obj;
         }
 
@@ -36,7 +36,7 @@ namespace RestaurantApp.Services.Service
         public void DeleteById(string id)
         {
             var obj = context.Dish.Where(x => x.DishId == id).FirstOrDefault();
-            obj.DishIsActive = true;
+            obj.DishIsActive = false;
             context.Dish.Update(obj);
             context.SaveChanges();
         }
@@ -69,7 +69,7 @@ namespace RestaurantApp.Services.Service
 
         public async Task<List<Dish>> GetAllDish()
         {
-            return await context.Dish.Where(x => !x.DishIsActive).ToListAsync();
+            return await context.Dish.Where(x => x.DishIsActive).ToListAsync();
         }
 
        
