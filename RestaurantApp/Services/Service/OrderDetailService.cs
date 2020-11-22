@@ -48,6 +48,7 @@ namespace RestaurantApp.Services.Service
             orderdetail.OrderDetailId = Guid.NewGuid().ToString();
             orderdetail.OrderDetailIsDeleted = false;
             context.OrderDetail.Add(orderdetail);
+
             context.SaveChanges();
         }
 

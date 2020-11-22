@@ -23,5 +23,7 @@ namespace RestaurantApp.Models
         public bool DishIsActive { get; set; }
         
         public int num { get; set; }
+
+        public decimal DishFunds { get; set; }
     }
 }

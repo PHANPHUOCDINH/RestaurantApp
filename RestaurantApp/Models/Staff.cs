@@ -21,7 +21,7 @@ namespace RestaurantApp.Models
 
         public DateTime? StaffBirthdate { get; set; }
 
-        public string StaffSalary { get; set; }
+        public decimal StaffSalary { get; set; }
 
         public bool StaffIsActive { get; set; }
 

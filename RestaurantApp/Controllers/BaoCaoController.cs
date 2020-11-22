@@ -24,5 +24,23 @@ namespace RestaurantApp.Controllers
         {
             return await service.top10bestseller(month,year);
         }
+
+        [HttpGet(ApiRoute.FoodFunds)]
+        public decimal  GetFoodFunds()
+        {
+            return  service.foodBuying();
+        }
+
+        [HttpGet(ApiRoute.TotalOrder)]
+        public decimal GetTotalOrder(int month)
+        {
+            return service.allOrderTotal(month);
+        }
+
+        [HttpGet(ApiRoute.TotalIncome)]
+        public decimal GetTotalIncome(int month)
+        {
+            return service.totalIncome(month);
+        }
     }
 }

@@ -19,7 +19,7 @@ namespace RestaurantApp.Models
 
         public DateTime? OrderEndtime { get; set; }
 
-        public string OrderTotal { get; set; }
+        public decimal OrderTotal { get; set; }
 
         public string OrderStatus { get; set; }
 

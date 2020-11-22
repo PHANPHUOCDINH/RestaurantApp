@@ -47,5 +47,43 @@ namespace RestaurantApp.Services.Service
             }
             context.SaveChanges();
         }
+
+        public decimal salaryPaying()
+        {
+            decimal money = 0;
+            List<Staff> staffs = context.Staff.Where(x => x.StaffIsActive).ToList();
+            foreach(Staff s in staffs)
+            {
+                money += s.StaffSalary;
+            }
+            return money;
+        }
+
+        public decimal foodBuying()
+        {
+            decimal money = 0;
+            List<Dish> dishes = context.Dish.Where(x => x.DishIsActive).ToList();
+            foreach (Dish d in dishes)
+            {
+                money += d.DishFunds;
+            }
+            return money;
+        }
+
+        public decimal allOrderTotal(int month)
+        {
+            decimal money = 0;
+            List<Order> orders = context.Order.Where(x => !x.OrderIsDeleted && x.OrderDate.Value.Month==month).ToList();
+            foreach(Order o in orders)
+            {
+                money += o.OrderTotal;
+            }
+            return money;
+        }
+
+        public decimal totalIncome(int month)
+        {
+            return allOrderTotal(month) - (this.salaryPaying() + this.foodBuying());
+        }
     }
 }
