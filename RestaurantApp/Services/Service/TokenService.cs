@@ -32,7 +32,7 @@ namespace RestaurantApp.Services.Service
                 jwtSettings.Issuer,
                 jwtSettings.Issuer,
                 claims:claim,
-                expires: DateTime.UtcNow.AddMinutes(1),
+                expires: DateTime.UtcNow.AddHours(6),
                 signingCredentials: creds);
 
             return new JwtSecurityTokenHandler().WriteToken(token);

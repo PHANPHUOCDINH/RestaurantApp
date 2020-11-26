@@ -23,7 +23,7 @@ namespace RestaurantApp.Controllers
         private readonly ApplicationDbContext _context;
         private readonly ITokenService _tokenservice;
         private readonly IStaffService _staffservice;
-        public AuthController(IConfiguration config,IStaffService staffService,ITokenService tokenService,ApplicationDbContext context)
+        public AuthController(IConfiguration config, IStaffService staffService, ITokenService tokenService, ApplicationDbContext context)
         {
             _config = config;
             _staffservice = staffService;
@@ -86,13 +86,15 @@ namespace RestaurantApp.Controllers
             };
             //var accessToken = _tokenservice.GenerateAccessToken(claims);
             var accessToken = _tokenservice.GenerateAccessToken(claims);
-             var refreshToken = _tokenservice.GenerateRefreshToken();
+            var refreshToken = _tokenservice.GenerateRefreshToken();
             user.RefreshToken = refreshToken;
             user.AccessToken = accessToken;
             _context.SaveChanges();
-            return Ok(new { Token = accessToken,
-                RefreshToken = refreshToken
-
+            return Ok(new
+            {
+                Token = accessToken,
+                RefreshToken = refreshToken,
+                UserId = user.StaffId
             });
 
         }

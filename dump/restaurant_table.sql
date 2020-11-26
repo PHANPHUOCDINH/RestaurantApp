@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.22, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.19, for Win64 (x86_64)
 --
--- Host: localhost    Database: restaurant
+-- Host: 127.0.0.1    Database: restaurant
 -- ------------------------------------------------------
--- Server version	8.0.22
+-- Server version	8.0.19
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -38,7 +38,7 @@ CREATE TABLE `table` (
 
 LOCK TABLES `table` WRITE;
 /*!40000 ALTER TABLE `table` DISABLE KEYS */;
-INSERT INTO `table` VALUES ('table01','Ban 1','higy',3,0),('table02','Ban 2',NULL,1,0),('table03','Ban 3',NULL,1,0);
+INSERT INTO `table` VALUES ('1','Bàn 1',NULL,3,0),('2','Bàn 2',NULL,1,0),('3','Bàn 3',NULL,1,0),('4','Bàn 4',NULL,1,0),('5','Bàn 5',NULL,1,0),('table01','Bàn 6','',3,0),('table02','Bàn 7',NULL,1,0),('table03','Bàn 8',NULL,1,0);
 /*!40000 ALTER TABLE `table` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-22 21:54:36
+-- Dump completed on 2020-11-26 22:28:46

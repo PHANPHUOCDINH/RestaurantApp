@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.22, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.19, for Win64 (x86_64)
 --
--- Host: localhost    Database: restaurant
+-- Host: 127.0.0.1    Database: restaurant
 -- ------------------------------------------------------
--- Server version	8.0.22
+-- Server version	8.0.19
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -25,13 +25,13 @@ DROP TABLE IF EXISTS `staff`;
 CREATE TABLE `staff` (
   `StaffId` varchar(50) NOT NULL,
   `RoleId` varchar(50) DEFAULT NULL,
-  `StaffVisa` varchar(5) DEFAULT NULL,
+  `StaffVisa` varchar(50) DEFAULT NULL,
   `StaffName` varchar(100) DEFAULT NULL,
   `StaffUsername` varchar(50) DEFAULT NULL,
   `StaffPassword` varchar(100) DEFAULT NULL,
   `StaffBirthdate` datetime DEFAULT NULL,
-  `StaffSalary` decimal(15,2) DEFAULT NULL,
-  `StaffIsActive` tinyint NOT NULL,
+  `StaffSalary` decimal(15,2) DEFAULT '0.00',
+  `StaffIsActive` tinyint NOT NULL DEFAULT '1',
   `ExternalId` varchar(50) DEFAULT NULL,
   `RefreshToken` longtext,
   `AccessToken` longtext,
@@ -45,7 +45,7 @@ CREATE TABLE `staff` (
 
 LOCK TABLES `staff` WRITE;
 /*!40000 ALTER TABLE `staff` DISABLE KEYS */;
-INSERT INTO `staff` VALUES ('9f22accb-c222-4088-8c14-c00e47bdd612',NULL,NULL,'Nguyen Van E',NULL,NULL,NULL,10000000.00,1,NULL,NULL,NULL),('dbc8697b-3e6c-44ec-a57c-0fde73650b8e',NULL,NULL,'Nguyen Van D','admin3','admin3',NULL,7000000.00,0,NULL,NULL,NULL),('staff001','role01',NULL,NULL,'admin','admin',NULL,5000000.00,0,NULL,'xIzPdx09oA2cWPeAM9bbStqXxj2amcq1D7FY6FuWAlU=',NULL),('staff002','role02',NULL,NULL,'admin1','admin1',NULL,7500000.00,1,NULL,NULL,NULL),('staff003','role01',NULL,NULL,'admin3','admin3',NULL,8500000.00,0,NULL,NULL,NULL);
+INSERT INTO `staff` VALUES ('11','1','476535t7345783478','Trần Waiter','1','1',NULL,10000000.00,1,NULL,'zhy/RxAz2/vgiMIbFBZgCrZRduRbC6H2rIEdHVG7Sa8=','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiMSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IjEiLCJleHAiOjE2MDY0MjQ5NzAsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjQ0Mzc4IiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzNzgifQ.sOveIqnI6f7jzaNnnu8KzIAjfp91EhCisPYCRu67RE8'),('2','1','476535t7345783478','Lê Waiter','2','2',NULL,7000000.00,1,NULL,'0kHqroMSdL0Ifswyw9g/9zcpeOwWETDVDD5TJ1qW8hY=','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiMiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IjEiLCJleHAiOjE2MDY0MjUyMDgsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjQ0Mzc4IiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzNzgifQ.yfgB_PFCtc0uDOMRiuKeBnLvdF1ZnuR6NpGcMLVlSSM'),('3','2','476535t7345783478','Đỗ Busboy','3','3',NULL,5000000.00,1,NULL,'8RlJmCwRBKGnr08DmGp6ijO9GhR9zTI6clDbtgJ68ak=','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiMyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IjIiLCJleHAiOjE2MDY0MjU5NTQsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjQ0Mzc4IiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzNzgifQ.vwT7H-ib_RLq8Ga9ciXoQLRJHGD_Wf4l0ClSCoFZSmk'),('4','2','476535t7345783478','Hà Busboy','4','4',NULL,7500000.00,1,NULL,'FcjRMQqJbCNNVc4NNQiQvGx7iBWhWbfY1I3jWNS0o2M=','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4xIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoicm9sZTAyIiwiZXhwIjoxNjA2NDE1MTAwLCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo0NDM3OCIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjQ0Mzc4In0.SNobnZ5-0NYdVlElYnxfRWwAJKLP8932CRry6F9sX3w'),('5','4','476535t7345783478','Phan Kitchen','5','5',NULL,8500000.00,1,NULL,NULL,NULL),('6','5','476535t7345783478','Lê Cashier','6','6',NULL,0.00,1,NULL,NULL,NULL),('7','4','476535t7345783478','Nguyễn Kitchen','7','7',NULL,0.00,1,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `staff` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -58,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-22 21:54:36
+-- Dump completed on 2020-11-26 22:28:46

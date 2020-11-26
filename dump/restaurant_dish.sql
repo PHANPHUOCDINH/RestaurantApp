@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.22, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.19, for Win64 (x86_64)
 --
--- Host: localhost    Database: restaurant
+-- Host: 127.0.0.1    Database: restaurant
 -- ------------------------------------------------------
--- Server version	8.0.22
+-- Server version	8.0.19
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -28,8 +28,9 @@ CREATE TABLE `dish` (
   `DishPrice` decimal(15,2) NOT NULL,
   `DishDescription` varchar(200) DEFAULT NULL,
   `DishIsActive` tinyint(1) NOT NULL,
-  `num` int NOT NULL,
+  `num` int DEFAULT '0',
   `DishFunds` decimal(15,2) DEFAULT NULL,
+  `DishImage` varchar(450) DEFAULT NULL,
   PRIMARY KEY (`DishId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -40,7 +41,7 @@ CREATE TABLE `dish` (
 
 LOCK TABLES `dish` WRITE;
 /*!40000 ALTER TABLE `dish` DISABLE KEYS */;
-INSERT INTO `dish` VALUES ('40547259-9c28-40fc-a80b-97985f5adffc','Cà ri',0.00,NULL,0,0,50000.00),('dish01','Cơm xào',0.00,NULL,1,2,40000.00),('dish02','Ga nuong',2000.00,NULL,1,1,60000.00),('dish03','Mi y',3000.00,NULL,1,1,80000.00);
+INSERT INTO `dish` VALUES ('1','Cơm tấm',30000.00,'Cơm ngon lắm',1,0,1.00,'https://images.foody.vn/res/g10/98048/prof/s576x330/foody-upload-api-foody-mobile-com-190311132057.jpg'),('2','Cơm lam',35000.00,'Cơm lam gà nướng',1,0,1.00,'https://thucphamdongxanh.com/wp-content/uploads/2020/09/com-lam-ong-tre.jpg'),('3','Mì xào bò',25000.00,'Mì dai dai',1,0,1.00,'https://cdn.cet.edu.vn/wp-content/uploads/2019/06/mi-xao-bo.jpg'),('4','Cơm chiên dưa bò',25000.00,'Cơm ngon tuyệt cú mèo',1,0,1.00,'https://v-food.vn/wp-content/uploads/2019/03/c%C6%A1m-rang-d%C6%B0a-b%C3%B2.-40k.jpg'),('5','Lẩu gà lá giang',90000.00,'Couple giá rẻ',1,0,1.00,'https://daynauan.info.vn/wp-content/uploads/2018/07/lau-ga-la-giang.jpg'),('6','Phở xào',25000.00,'Phở ngon',1,0,1.00,'https://daynauan.info.vn/wp-content/uploads/2018/06/pho-xao-bo.jpg'),('7','Lẩu thái',150000.00,'Lẩu Thái chuẩn Thái',1,0,1.00,'https://image-us.eva.vn/upload/1-2019/images/2019-03-26/1553563014-942-thumbnail_schema_article.jpg'),('8','Hến xào',30000.00,'Hến ngon',1,0,1.00,'https://img-global.cpcdn.com/recipes/9877bb218702b13d/751x532cq70/h%E1%BA%BFn-xao-h%E1%BA%B9-xuc-banh-da-recipe-main-photo.jpg');
 /*!40000 ALTER TABLE `dish` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-22 21:54:36
+-- Dump completed on 2020-11-26 22:28:46

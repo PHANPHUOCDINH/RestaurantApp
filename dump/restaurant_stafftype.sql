@@ -16,34 +16,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `order`
+-- Table structure for table `stafftype`
 --
 
-DROP TABLE IF EXISTS `order`;
+DROP TABLE IF EXISTS `stafftype`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `order` (
-  `OrderId` varchar(50) NOT NULL,
-  `TableId` varchar(50) DEFAULT NULL,
-  `WaiterId` varchar(50) DEFAULT NULL,
-  `OrderDate` datetime DEFAULT NULL,
-  `OrderTotal` decimal(15,2) DEFAULT NULL,
-  `OrderStarttime` datetime DEFAULT NULL,
-  `OrderEndtime` datetime DEFAULT NULL,
-  `OrderIsDeleted` tinyint DEFAULT NULL,
-  `OrderStatus` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`OrderId`)
+CREATE TABLE `stafftype` (
+  `stafftype_id` varchar(50) NOT NULL,
+  `stafftype_name` varchar(100) NOT NULL,
+  `stafftype_description` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`stafftype_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `order`
+-- Dumping data for table `stafftype`
 --
 
-LOCK TABLES `order` WRITE;
-/*!40000 ALTER TABLE `order` DISABLE KEYS */;
-INSERT INTO `order` VALUES ('f88c130c-3a0f-4e9a-b480-02a77ece23c0',NULL,NULL,NULL,700000.00,NULL,NULL,1,NULL),('order01',NULL,NULL,NULL,700000.00,NULL,NULL,0,'0'),('order02','table01','staff003',NULL,100.00,NULL,NULL,0,'1'),('order03','table02','staff003',NULL,100000.00,NULL,NULL,0,'1');
-/*!40000 ALTER TABLE `order` ENABLE KEYS */;
+LOCK TABLES `stafftype` WRITE;
+/*!40000 ALTER TABLE `stafftype` DISABLE KEYS */;
+/*!40000 ALTER TABLE `stafftype` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

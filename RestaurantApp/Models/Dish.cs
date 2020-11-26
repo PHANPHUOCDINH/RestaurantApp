@@ -21,9 +21,10 @@ namespace RestaurantApp.Models
         public string DishDescription { get; set; }
 
         public bool DishIsActive { get; set; }
-        
+
         public int num { get; set; }
 
         public decimal DishFunds { get; set; }
+        public string DishImage { get; set; }
     }
 }
