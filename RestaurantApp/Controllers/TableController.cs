@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace RestaurantApp.Controllers
 {
+    [Authorize]
     public class TableController : Controller
     {
         private readonly ITableService service;
@@ -18,8 +19,7 @@ namespace RestaurantApp.Controllers
         {
             this.service = service;
         }
-
-        [Authorize]
+        
         [HttpGet(ApiRoute.GetAllTable)]
         public async Task<List<Table>> GetAllTableAsync()
         {
@@ -34,8 +34,7 @@ namespace RestaurantApp.Controllers
         //    var service = (ITestService)ServiceProvider.GetService(typeof(ITestService));
         //    return Ok(await _service.GetAllTestAsync());
         //} 
-        [Authorize]
-        [HttpPut(ApiRoute.UpdateTableStatus)]
+        [HttpPost(ApiRoute.UpdateTableStatus)]
         public void UpdateTableStatus([FromBody] Table table)
         {
             service.UpdateTableStatus(table);

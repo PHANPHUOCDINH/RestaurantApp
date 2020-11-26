@@ -10,7 +10,8 @@ using System.Threading.Tasks;
 
 namespace RestaurantApp.Controllers
 {
-    public class OrderController:Controller
+    [Authorize]
+    public class OrderController : Controller
     {
         private readonly IOrderService service;
         public OrderController(IOrderService service)
@@ -18,36 +19,31 @@ namespace RestaurantApp.Controllers
             this.service = service;
         }
 
-        [Authorize]
         [HttpGet(ApiRoute.GetAllOrderAsync)]
         public async Task<List<Order>> GetAllOrderAsync()
         {
             return await service.GetAll();
         }
 
-        [Authorize]
         [HttpGet(ApiRoute.GetOrderById)]
         public Order GetOrderById(string id)
         {
             return service.GetById(id);
         }
 
-        [Authorize]
         [HttpPost(ApiRoute.AddOrder)]
         public void AddOrder([FromBody] Order order)
         {
             service.Insert(order);
         }
 
-        [Authorize]
-        [HttpPut(ApiRoute.UpdateOrder)]
+        [HttpPost(ApiRoute.UpdateOrder)]
         public void UpdateOrder([FromBody] Order order)
         {
             service.Update(order);
         }
 
-        [Authorize]
-        [HttpDelete(ApiRoute.DeleteOrder)]
+        [HttpPost(ApiRoute.DeleteOrder)]
         public void DeleteOrder(string id)
         {
             service.DeleteById(id);

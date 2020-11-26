@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RestaurantApp.Controllers
 {
-    public class TestController: Controller
+    public class TestController : Controller
     {
         //private readonly ITestService service;
         //public TestController(ITestService context)
@@ -21,5 +21,10 @@ namespace RestaurantApp.Controllers
         //{
         //    return await service.GetAllTestAsync();
         //}
+        [HttpGet("gettest")]
+        public IActionResult GetTest()
+        {
+            return Ok("abc hehhheheh");
+        }
     }
 }

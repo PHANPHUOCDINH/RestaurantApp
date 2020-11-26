@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RestaurantApp.Models;
 using RestaurantApp.Route;
 using RestaurantApp.Services.IService;
@@ -9,7 +10,8 @@ using System.Threading.Tasks;
 
 namespace RestaurantApp.Controllers
 {
-    public class BaoCaoController:Controller
+    [Authorize]
+    public class BaoCaoController : Controller
     {
         private readonly IBaoCaoService service;
         public BaoCaoController(IBaoCaoService service)
@@ -18,17 +20,16 @@ namespace RestaurantApp.Controllers
 
         }
 
-       //Authorize]
         [HttpGet(ApiRoute.Top10BestSeller)]
-        public async Task<List<Dish>> Top10BestSeller(int month,int year)
+        public async Task<List<Dish>> Top10BestSeller(int month, int year)
         {
-            return await service.top10bestseller(month,year);
+            return await service.top10bestseller(month, year);
         }
 
         [HttpGet(ApiRoute.FoodFunds)]
-        public decimal  GetFoodFunds()
+        public decimal GetFoodFunds()
         {
-            return  service.foodBuying();
+            return service.foodBuying();
         }
 
         [HttpGet(ApiRoute.TotalOrder)]

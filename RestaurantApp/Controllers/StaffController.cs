@@ -11,7 +11,8 @@ using System.Threading.Tasks;
 
 namespace RestaurantApp.Controllers
 {
-    public class StaffController:Controller
+    [Authorize]
+    public class StaffController : Controller
     {
         private readonly IStaffService service;
         public StaffController(IStaffService service)
@@ -19,43 +20,37 @@ namespace RestaurantApp.Controllers
             this.service = service;
         }
 
-       // [Authorize]
         [HttpGet(ApiRoute.GetAllStaffAsync)]
         public async Task<List<Staff>> GetAllStaffAsync()
         {
             return await service.GetAll();
         }
 
-        [Authorize]
         [HttpPost(ApiRoute.InsertStaff)]
-        public void InsertStaff([FromBody]Staff staff)
+        public void InsertStaff([FromBody] Staff staff)
         {
             service.Insert(staff);
         }
 
-        [Authorize]
-        [HttpDelete(ApiRoute.DeleteStaff)]
+        [HttpPost(ApiRoute.DeleteStaff)]
         public void DeleteStaff(string id)
         {
             service.DeleteStaff(id);
         }
 
-        [Authorize]
         [HttpGet(ApiRoute.GetById)]
         public Staff GetById(string id)
         {
             return service.GetStaffById(id);
         }
 
-        [Authorize]
         [HttpGet(ApiRoute.GetByUsername)]
         public Staff GetByUsername(string username)
         {
             return service.GetStaffByUsername(username);
         }
 
-        [Authorize]
-        [HttpPut(ApiRoute.UpdateStaff)]
+        [HttpPost(ApiRoute.UpdateStaff)]
         public void UpdateStaff([FromBody] Staff staff)
         {
             service.Update(staff);
