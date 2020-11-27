@@ -10,5 +10,7 @@ namespace RestaurantApp.Services.IService
     public interface IRoleService
     {
         Task<List<Role>> GetAllRole();
+
+        Role GetById(String id);
     }
 }

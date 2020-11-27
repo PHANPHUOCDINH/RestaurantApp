@@ -21,5 +21,11 @@ namespace RestaurantApp.Services.Service
         {
             return await context.Role.ToListAsync();
         }
+
+        public Role GetById(string id)
+        {
+            var obj = context.Role.Where(x => x.RoleId == id).FirstOrDefault();
+            return (Role)obj;
+        }
     }
 }

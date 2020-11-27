@@ -33,7 +33,7 @@ namespace RestaurantApp.Services.Service
                     context.Update(item1);
                 }
             }
-            context.SaveChanges();
+            context.SaveChangesAsync();
             return await context.Dish.Where(x => x.DishIsActive).OrderByDescending(x => x.num).Take(10).ToListAsync();
         }
 
@@ -45,7 +45,7 @@ namespace RestaurantApp.Services.Service
                 d.num = 0;
                 context.Update(d);
             }
-            context.SaveChanges();
+            context.SaveChangesAsync();
         }
 
         public decimal salaryPaying()

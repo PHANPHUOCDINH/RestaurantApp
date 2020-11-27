@@ -23,5 +23,11 @@ namespace RestaurantApp.Controllers
         {
             return await service.GetAllRole();
         }
+
+        [HttpGet(ApiRoute.GetRoleById)]
+        public Role GetById(string id)
+        {
+            return service.GetById(id);
+        }
     }
 }

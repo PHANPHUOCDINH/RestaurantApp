@@ -40,7 +40,7 @@ namespace RestaurantApp.Services.Service
             var obj = context.Staff.Where(x => x.StaffId == id).FirstOrDefault();
             obj.StaffIsActive = false;
             context.Staff.Update(obj);
-            context.SaveChanges();
+            context.SaveChangesAsync();
         }
 
         public async Task<List<Staff>> GetAll()
@@ -67,7 +67,7 @@ namespace RestaurantApp.Services.Service
             staff.StaffId = Guid.NewGuid().ToString();
             staff.StaffIsActive = true;
             context.Staff.Add(staff);
-            context.SaveChanges();
+            context.SaveChangesAsync();
         }
 
         public void Update(Staff staff)
@@ -81,7 +81,7 @@ namespace RestaurantApp.Services.Service
             obj.StaffBirthdate = staff.StaffBirthdate;
             obj.StaffSalary = staff.StaffSalary;
             context.Staff.Update(obj);
-            context.SaveChanges();
+            context.SaveChangesAsync();
 
         }
 

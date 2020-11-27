@@ -22,7 +22,7 @@ namespace RestaurantApp.Services.Service
             var obj = context.Order.Where(x => x.OrderId == id).FirstOrDefault();
             obj.OrderIsDeleted = true;
             context.Order.Update(obj);
-            context.SaveChanges();
+            context.SaveChangesAsync();
         }
 
         public Order GetById(string id)
@@ -42,7 +42,7 @@ namespace RestaurantApp.Services.Service
             order.OrderId = Guid.NewGuid().ToString();
             order.OrderIsDeleted = false;
             context.Order.Add(order);
-            context.SaveChanges();
+            context.SaveChangesAsync();
         }
 
         public void Update(Order order)
@@ -55,7 +55,7 @@ namespace RestaurantApp.Services.Service
             obj.TableId = order.TableId;
             obj.WaiterId = order.WaiterId;
             context.Order.Update(obj);
-            context.SaveChanges();
+            context.SaveChangesAsync();
         }
     }
 }

@@ -31,14 +31,14 @@ namespace RestaurantApp.Services.Service
             dish.DishIsActive = false;
             dish.DishId = Guid.NewGuid().ToString();
             context.Dish.Add(dish);
-            context.SaveChanges();
+            context.SaveChangesAsync();
         }
         public void DeleteById(string id)
         {
             var obj = context.Dish.Where(x => x.DishId == id).FirstOrDefault();
             obj.DishIsActive = false;
             context.Dish.Update(obj);
-            context.SaveChanges();
+            context.SaveChangesAsync();
         }
 
 
@@ -64,7 +64,7 @@ namespace RestaurantApp.Services.Service
             obj.DishName = dish.DishName;
             obj.DishPrice = dish.DishPrice;
             context.Dish.Update(obj);
-            context.SaveChanges();
+            context.SaveChangesAsync();
         }
 
         public async Task<List<Dish>> GetAllDish()
