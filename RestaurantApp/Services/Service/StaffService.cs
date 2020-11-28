@@ -17,7 +17,7 @@ namespace RestaurantApp.Services.Service
         {
             this.context = context;
         }
-        public bool CheckLogIn(string username,string password)
+        public bool CheckLogIn(string username, string password)
         {
             // bool isSuccess = false;
             //Staff user = context.Staff.Where(x => !(x.StaffUsername != username)).FirstOrDefault();
@@ -32,7 +32,7 @@ namespace RestaurantApp.Services.Service
                 return true;
             }
             else
-                return false ;
+                return false;
         }
 
         public void DeleteStaff(string id)
@@ -80,9 +80,10 @@ namespace RestaurantApp.Services.Service
             obj.StaffPassword = staff.StaffPassword;
             obj.StaffBirthdate = staff.StaffBirthdate;
             obj.StaffSalary = staff.StaffSalary;
+            obj.StaffIsActive = staff.StaffIsActive;
+            obj.ExternalId = staff.ExternalId;
             context.Staff.Update(obj);
             context.SaveChangesAsync();
-
         }
 
     }
