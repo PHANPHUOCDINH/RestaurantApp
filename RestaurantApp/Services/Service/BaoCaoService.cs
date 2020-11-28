@@ -65,7 +65,7 @@ namespace RestaurantApp.Services.Service
             List<Dish> dishes = context.Dish.Where(x => x.DishIsActive).ToList();
             foreach (Dish d in dishes)
             {
-                money += d.DishFunds;
+                money += 0;
             }
             return money;
         }

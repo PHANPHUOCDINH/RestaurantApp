@@ -18,7 +18,7 @@ namespace RestaurantApp.Services.Service
             this.context = context;
         }
 
-        
+
 
         public Dish GetById(string id)
         {
@@ -63,6 +63,7 @@ namespace RestaurantApp.Services.Service
             obj.DishIsActive = dish.DishIsActive;
             obj.DishName = dish.DishName;
             obj.DishPrice = dish.DishPrice;
+            obj.DishImage = dish.DishImage;
             context.Dish.Update(obj);
             context.SaveChangesAsync();
         }
@@ -72,6 +73,6 @@ namespace RestaurantApp.Services.Service
             return await context.Dish.Where(x => x.DishIsActive).ToListAsync();
         }
 
-       
+
     }
 }

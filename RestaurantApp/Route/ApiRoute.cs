@@ -36,7 +36,7 @@ namespace RestaurantApp.Route
         public const string FoodFunds = "dish/allfunds";
         public const string TotalOrder = "order/total/{month}";
         public const string TotalIncome = "report/income/{month}";
-        public const string GetAllRoleAsync = "role/getall"
+        public const string GetAllRoleAsync = "role/getall";
         public const string GetRoleById = "role/{id}";
     }
 }
