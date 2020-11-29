@@ -74,7 +74,7 @@ namespace RestaurantApp.Controllers
             //bool validUser = Authenticate(login.StaffUsername, login.StaffPassword);
             var user = _context.Staff
             .FirstOrDefault(u => (u.StaffUsername == login.StaffUsername) &&
-                                    (u.StaffPassword == login.StaffPassword));
+                                    (u.StaffPassword == login.StaffPassword) && (u.StaffIsActive));
             if (user == null)
             {
                 return Unauthorized();

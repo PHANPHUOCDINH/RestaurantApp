@@ -50,7 +50,7 @@ namespace RestaurantApp.Services.Service
 
         public Staff GetStaffById(string id)
         {
-            var obj = context.Staff.Where(x => x.StaffId == id && x.StaffIsActive).FirstOrDefault();
+            var obj = context.Staff.Where(x => x.StaffId == id).FirstOrDefault();
             return (Staff)obj;
         }
 
