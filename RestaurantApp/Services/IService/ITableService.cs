@@ -8,7 +8,7 @@ namespace RestaurantApp.Services.IService
 {
     public interface ITableService
     {
-        Task<List<Table>> GetAllTableAsync();
+        Task<List<Table>> GetAllTableAsync(bool isactive);
 
         void UpdateTableStatus(Table table);
     }

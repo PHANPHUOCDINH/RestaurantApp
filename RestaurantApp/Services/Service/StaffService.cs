@@ -43,9 +43,12 @@ namespace RestaurantApp.Services.Service
             context.SaveChangesAsync();
         }
 
-        public async Task<List<Staff>> GetAll()
+        public async Task<List<Staff>> GetAll(bool isactive)
         {
-            return await context.Staff.Where(x => x.StaffIsActive).ToListAsync();
+            if(isactive)
+                return await context.Staff.Where(x => x.StaffIsActive).ToListAsync();
+            else
+                return await context.Staff.ToListAsync();
         }
 
         public Staff GetStaffById(string id)

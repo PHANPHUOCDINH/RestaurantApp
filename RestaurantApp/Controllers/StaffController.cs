@@ -21,9 +21,9 @@ namespace RestaurantApp.Controllers
         }
 
         [HttpGet(ApiRoute.GetAllStaffAsync)]
-        public async Task<List<Staff>> GetAllStaffAsync()
+        public async Task<List<Staff>> GetAllStaffAsync(bool isactive)
         {
-            return await service.GetAll();
+            return await service.GetAll(isactive);
         }
 
         [HttpPost(ApiRoute.InsertStaff)]

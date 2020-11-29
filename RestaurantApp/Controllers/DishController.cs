@@ -21,9 +21,9 @@ namespace RestaurantApp.Controllers
         }
 
         [HttpGet(ApiRoute.GetAllDishAsync)]
-        public async Task<List<Dish>> GetAllDish()
+        public async Task<List<Dish>> GetAllDish(bool isactive)
         {
-            return await service.GetAllDish();
+            return await service.GetAllDish(isactive);
         }
 
         [HttpPost(ApiRoute.AddDish)]

@@ -12,7 +12,7 @@ namespace RestaurantApp.Services.IService
 
         void Update(Staff staff);
 
-        Task<List<Staff>> GetAll();
+        Task<List<Staff>> GetAll(bool isactive);
 
         Staff GetStaffById(string id);
 

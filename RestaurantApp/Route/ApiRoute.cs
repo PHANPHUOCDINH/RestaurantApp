@@ -7,9 +7,9 @@ namespace RestaurantApp.Route
 {
     public class ApiRoute
     {
-        public const string GetAllTable = "table/getall";
+        public const string GetAllTable = "table/getall/{isactive}";
         public const string UpdateTableStatus = "table/updatestatus";
-        public const string GetAllDishAsync = "dish/getall";
+        public const string GetAllDishAsync = "dish/getall/{isactive}";
         public const string AddDish = "dish/add";
         public const string GetDishById = "dish/{id}";
         public const string UpdateDish = "dish/update";
@@ -26,7 +26,7 @@ namespace RestaurantApp.Route
         public const string DeleteOrderDetail = "orderdetail/{id}";
         public const string UpdateCookRequest = "orderdetail/updatecookrequest";
         public const string UpdateStatus = "orderdetail/updatestatus";
-        public const string GetAllStaffAsync = "staff/getall";
+        public const string GetAllStaffAsync = "staff/getall/{isactive}";
         public const string InsertStaff = "staff/add";
         public const string DeleteStaff = "staff/{id}";
         public const string GetById = "staff/{id}";

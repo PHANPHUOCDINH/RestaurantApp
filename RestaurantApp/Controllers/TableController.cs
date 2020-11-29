@@ -21,9 +21,9 @@ namespace RestaurantApp.Controllers
         }
         
         [HttpGet(ApiRoute.GetAllTable)]
-        public async Task<List<Table>> GetAllTableAsync()
+        public async Task<List<Table>> GetAllTableAsync(bool isactive)
         {
-            return await service.GetAllTableAsync();
+            return await service.GetAllTableAsync(isactive);
         }
 
         //[HttpGet("test")]

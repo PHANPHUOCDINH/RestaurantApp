@@ -68,9 +68,12 @@ namespace RestaurantApp.Services.Service
             context.SaveChangesAsync();
         }
 
-        public async Task<List<Dish>> GetAllDish()
+        public async Task<List<Dish>> GetAllDish(bool isactive)
         {
-            return await context.Dish.Where(x => x.DishIsActive).ToListAsync();
+            if(isactive)
+                return await context.Dish.Where(x => x.DishIsActive).ToListAsync();
+            else
+                return await context.Dish.ToListAsync();
         }
 
 

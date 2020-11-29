@@ -16,9 +16,12 @@ namespace RestaurantApp.Services.Service
         {
             this.context = context;
         }
-        public async Task<List<Table>> GetAllTableAsync()
+        public async Task<List<Table>> GetAllTableAsync(bool isactive)
         {
-            return await context.Table.Where(x=>x.TableIsActive).ToListAsync();
+            if(isactive)
+                return await context.Table.Where(x=>x.TableIsActive==isactive).ToListAsync();
+            else
+                return await context.Table.ToListAsync();
         }
 
         public void UpdateTableStatus(Table table)
