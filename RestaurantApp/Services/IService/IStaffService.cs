@@ -8,9 +8,9 @@ namespace RestaurantApp.Services.IService
 {
     public interface IStaffService
     {
-        string Insert(Staff staff);
+        Task<string> Insert(Staff staff);
 
-        void Update(Staff staff);
+        Task<string> Update(Staff staff);
 
         Task<List<Staff>> GetAll(bool isactive);
 

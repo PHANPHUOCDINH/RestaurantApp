@@ -27,9 +27,13 @@ namespace RestaurantApp.Controllers
         }
 
         [HttpPost(ApiRoute.InsertStaff)]
-        public IActionResult InsertStaff([FromBody] Staff staff)
+        public async Task<JsonResult> InsertStaffAsync([FromBody] Staff staff)
         {
-            return Ok(service.Insert(staff));
+            string result =await service.Insert(staff);
+            if (result == null)
+                return Json(new { Id = "fail" });
+            else
+                return Json(new { Id = staff.StaffId });
         }
 
         [HttpPost(ApiRoute.DeleteStaff)]
@@ -51,9 +55,13 @@ namespace RestaurantApp.Controllers
         }
 
         [HttpPost(ApiRoute.UpdateStaff)]
-        public void UpdateStaff([FromBody] Staff staff)
+        public async Task<JsonResult> UpdateStaff([FromBody] Staff staff)
         {
-            service.Update(staff);
+            string result = await service.Update(staff);
+            if (result == null)
+                return Json(new { status = "fail" });
+            else
+                return Json(new { status = "success" });
         }
     }
 }

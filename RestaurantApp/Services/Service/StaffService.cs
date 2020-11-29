@@ -63,18 +63,25 @@ namespace RestaurantApp.Services.Service
             return (Staff)obj;
         }
 
-        public string Insert(Staff staff)
+        public async Task<string> Insert(Staff staff)
         {
             //string passwordHash = BCrypt.Net.BCrypt.HashPassword(staff.StaffPassword, 12);
             //staff.StaffPassword = passwordHash;
             staff.StaffId = Guid.NewGuid().ToString();
             staff.StaffIsActive = true;
             context.Staff.Add(staff);
-            context.SaveChangesAsync();
-            return staff.StaffId;
+            int i=-1;
+            try { i=await context.SaveChangesAsync(); }
+            catch
+            {
+
+            }
+            if (i > 0)
+                return staff.StaffId;
+            else return null;
         }
 
-        public void Update(Staff staff)
+        public async Task<string> Update(Staff staff)
         {
             var obj = context.Staff.Where(x => x.StaffId == staff.StaffId).FirstOrDefault();
             obj.StaffName = staff.StaffName;
@@ -87,7 +94,15 @@ namespace RestaurantApp.Services.Service
             obj.StaffIsActive = staff.StaffIsActive;
             obj.ExternalId = staff.ExternalId;
             context.Staff.Update(obj);
-            context.SaveChangesAsync();
+            int i = -1;
+            try { i = await context.SaveChangesAsync(); }
+            catch
+            {
+
+            }
+            if (i > 0)
+                return staff.StaffId;
+            else return null;
         }
 
     }
