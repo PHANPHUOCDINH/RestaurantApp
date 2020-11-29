@@ -8,7 +8,7 @@ namespace RestaurantApp.Services.IService
 {
     public interface IOrderDetailService
     {
-        void Insert(OrderDetail orderdetail);
+        string Insert(OrderDetail orderdetail);
 
         Task<List<OrderDetail>> GetAll(string cookId);
 

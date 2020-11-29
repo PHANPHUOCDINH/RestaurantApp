@@ -27,9 +27,9 @@ namespace RestaurantApp.Controllers
         }
 
         [HttpPost(ApiRoute.InsertStaff)]
-        public void InsertStaff([FromBody] Staff staff)
+        public IActionResult InsertStaff([FromBody] Staff staff)
         {
-            service.Insert(staff);
+            return Ok(service.Insert(staff));
         }
 
         [HttpPost(ApiRoute.DeleteStaff)]

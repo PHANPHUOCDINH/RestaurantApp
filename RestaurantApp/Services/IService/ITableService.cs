@@ -11,5 +11,7 @@ namespace RestaurantApp.Services.IService
         Task<List<Table>> GetAllTableAsync(bool isactive);
 
         void UpdateTableStatus(Table table);
+
+        string Insert(Table table);
     }
 }

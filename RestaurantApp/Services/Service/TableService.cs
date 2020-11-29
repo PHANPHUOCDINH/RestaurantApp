@@ -24,6 +24,15 @@ namespace RestaurantApp.Services.Service
                 return await context.Table.ToListAsync();
         }
 
+        public string Insert(Table table)
+        {
+            table.TableId = Guid.NewGuid().ToString();
+            table.TableIsActive = true;
+            context.Table.Add(table);
+            context.SaveChangesAsync();
+            return table.TableId;
+        }
+
         public void UpdateTableStatus(Table table)
         {
             var obj = context.Table.Where(x => x.TableId == table.TableId).FirstOrDefault();

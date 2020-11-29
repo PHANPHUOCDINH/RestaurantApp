@@ -26,12 +26,13 @@ namespace RestaurantApp.Services.Service
             return (Dish)obj;
         }
 
-        public void Insert(Dish dish)
+        public string Insert(Dish dish)
         {
             dish.DishIsActive = false;
             dish.DishId = Guid.NewGuid().ToString();
             context.Dish.Add(dish);
             context.SaveChangesAsync();
+            return dish.DishId;
         }
         public void DeleteById(string id)
         {

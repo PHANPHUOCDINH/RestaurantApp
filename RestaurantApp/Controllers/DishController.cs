@@ -27,9 +27,9 @@ namespace RestaurantApp.Controllers
         }
 
         [HttpPost(ApiRoute.AddDish)]
-        public void AddDish([FromBody] Dish dish)
+        public IActionResult AddDish([FromBody] Dish dish)
         {
-            service.Insert(dish);
+            return Ok(service.Insert(dish));
         }
 
         [HttpGet(ApiRoute.GetDishById)]

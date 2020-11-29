@@ -43,13 +43,14 @@ namespace RestaurantApp.Services.Service
          
         }
 
-        public void Insert(OrderDetail orderdetail)
+        public string Insert(OrderDetail orderdetail)
         {
             orderdetail.OrderDetailId = Guid.NewGuid().ToString();
             orderdetail.OrderDetailIsDeleted = false;
             context.OrderDetail.Add(orderdetail);
 
             context.SaveChangesAsync();
+            return orderdetail.OrderDetailId;
         }
 
         public void UpdateCookRequest(OrderDetail od)

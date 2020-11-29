@@ -8,7 +8,7 @@ namespace RestaurantApp.Services.IService
 {
     public interface IDishService
     {
-        void Insert(Dish dish);
+        string Insert(Dish dish);
 
         Task<List<Dish>> GetAllDish(bool isactive);
 

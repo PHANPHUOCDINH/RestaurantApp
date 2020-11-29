@@ -37,12 +37,13 @@ namespace RestaurantApp.Services.Service
         }
 
 
-        public void Insert(Order order)
+        public string Insert(Order order)
         {
             order.OrderId = Guid.NewGuid().ToString();
             order.OrderIsDeleted = false;
             context.Order.Add(order);
             context.SaveChangesAsync();
+            return order.OrderId;
         }
 
         public void Update(Order order)

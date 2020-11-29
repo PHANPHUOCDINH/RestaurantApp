@@ -8,7 +8,7 @@ namespace RestaurantApp.Services.IService
 {
     public interface IStaffService
     {
-        void Insert(Staff staff);
+        string Insert(Staff staff);
 
         void Update(Staff staff);
 

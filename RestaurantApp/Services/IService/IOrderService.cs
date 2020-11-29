@@ -8,7 +8,7 @@ namespace RestaurantApp.Services.IService
 {
     public interface IOrderService
     {
-        void Insert(Order order);
+        string Insert(Order order);
 
         Task<List<Order>> GetAll();
 

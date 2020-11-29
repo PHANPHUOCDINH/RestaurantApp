@@ -63,7 +63,7 @@ namespace RestaurantApp.Services.Service
             return (Staff)obj;
         }
 
-        public void Insert(Staff staff)
+        public string Insert(Staff staff)
         {
             //string passwordHash = BCrypt.Net.BCrypt.HashPassword(staff.StaffPassword, 12);
             //staff.StaffPassword = passwordHash;
@@ -71,6 +71,7 @@ namespace RestaurantApp.Services.Service
             staff.StaffIsActive = true;
             context.Staff.Add(staff);
             context.SaveChangesAsync();
+            return staff.StaffId;
         }
 
         public void Update(Staff staff)

@@ -38,9 +38,9 @@ namespace RestaurantApp.Controllers
         }
 
         [HttpPost(ApiRoute.AddOrderDetail)]
-        public void AddOrderDetail([FromBody]OrderDetail orderdetail)
+        public IActionResult AddOrderDetail([FromBody]OrderDetail orderdetail)
         {
-            service.Insert(orderdetail);
+            return Ok(service.Insert(orderdetail));
         }
 
         [HttpPost(ApiRoute.DeleteOrderDetail)]

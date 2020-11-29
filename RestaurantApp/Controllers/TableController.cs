@@ -39,5 +39,11 @@ namespace RestaurantApp.Controllers
         {
             service.UpdateTableStatus(table);
         }
+
+        [HttpPost(ApiRoute.AddTable)]
+        public IActionResult AddTable([FromBody] Table table)
+        {
+            return Ok(service.Insert(table));
+        }
     }
 }
