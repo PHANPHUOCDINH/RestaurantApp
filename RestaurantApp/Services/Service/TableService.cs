@@ -18,8 +18,8 @@ namespace RestaurantApp.Services.Service
         }
         public async Task<List<Table>> GetAllTableAsync(bool isactive)
         {
-            if(isactive)
-                return await context.Table.Where(x=>x.TableIsActive==isactive).ToListAsync();
+            if (isactive)
+                return await context.Table.Where(x => x.TableIsActive == isactive).ToListAsync();
             else
                 return await context.Table.ToListAsync();
         }
@@ -33,14 +33,17 @@ namespace RestaurantApp.Services.Service
             return table.TableId;
         }
 
-        public void UpdateTableStatus(Table table)
+        public void UpdateTable(Table table)
         {
             var obj = context.Table.Where(x => x.TableId == table.TableId).FirstOrDefault();
             obj.TableStatus = table.TableStatus;
+            obj.TableIdOrderServing = table.TableIdOrderServing;
+            obj.TableName = table.TableName;
+            obj.TableIsActive = table.TableIsActive;
             context.Table.Update(obj);
-            context.SaveChangesAsync();      
+            context.SaveChangesAsync();
         }
 
-        
+
     }
 }

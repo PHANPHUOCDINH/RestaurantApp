@@ -37,7 +37,7 @@ namespace RestaurantApp.Controllers
         [HttpPost(ApiRoute.UpdateTableStatus)]
         public void UpdateTableStatus([FromBody] Table table)
         {
-            service.UpdateTableStatus(table);
+            service.UpdateTable(table);
         }
 
         [HttpPost(ApiRoute.AddTable)]

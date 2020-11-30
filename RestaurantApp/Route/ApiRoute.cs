@@ -8,7 +8,7 @@ namespace RestaurantApp.Route
     public class ApiRoute
     {
         public const string GetAllTable = "table/getall/{isactive}";
-        public const string UpdateTableStatus = "table/updatestatus";
+        public const string UpdateTableStatus = "table/update";
         public const string AddTable = "table/add";
         public const string GetAllDishAsync = "dish/getall/{isactive}";
         public const string AddDish = "dish/add";
