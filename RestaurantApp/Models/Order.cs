@@ -21,7 +21,7 @@ namespace RestaurantApp.Models
 
         public decimal OrderTotal { get; set; }
 
-        public string OrderStatus { get; set; }
+        public int OrderStatus { get; set; }
 
         public bool OrderIsDeleted { get; set; }
     }
