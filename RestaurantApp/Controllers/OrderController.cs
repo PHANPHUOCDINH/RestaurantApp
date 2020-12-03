@@ -34,7 +34,7 @@ namespace RestaurantApp.Controllers
         [HttpPost(ApiRoute.AddOrder)]
         public IActionResult AddOrder([FromBody] Order order)
         {
-            return Ok(service.Insert(order));
+            return Ok(new { Id = service.Insert(order) });
         }
 
         [HttpPost(ApiRoute.UpdateOrder)]
