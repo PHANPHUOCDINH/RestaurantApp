@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace RestaurantApp.Controllers
 {
     [Authorize]
-    public class OrderDetailController:Controller
+    public class OrderDetailController : Controller
     {
         private readonly IOrderDetailService service;
         public OrderDetailController(IOrderDetailService service)
@@ -38,9 +38,9 @@ namespace RestaurantApp.Controllers
         }
 
         [HttpPost(ApiRoute.AddOrderDetail)]
-        public IActionResult AddOrderDetail([FromBody]OrderDetail orderdetail)
+        public IActionResult AddOrderDetail([FromBody] OrderDetail orderdetail)
         {
-            return Ok(service.Insert(orderdetail));
+            return Ok(new { Id = service.Insert(orderdetail) });
         }
 
         [HttpPost(ApiRoute.DeleteOrderDetail)]
@@ -50,7 +50,7 @@ namespace RestaurantApp.Controllers
         }
 
         [HttpPost(ApiRoute.UpdateCookRequest)]
-        public void UpdateCookRequest([FromBody]OrderDetail od)
+        public void UpdateCookRequest([FromBody] OrderDetail od)
         {
             service.UpdateCookRequest(od);
         }

@@ -21,10 +21,10 @@ namespace RestaurantApp.Controllers
         //{
         //    return await service.GetAllTestAsync();
         //}
-        [HttpGet("gettest")]
+        [HttpGet("hello")]
         public IActionResult GetTest()
         {
-            return Ok("abc hehhheheh");
+            return Ok("Konnichiwa!");
         }
     }
 }
