@@ -60,5 +60,10 @@ namespace RestaurantApp.Controllers
         {
             service.UpdateStatus(od);
         }
+        [HttpPost(ApiRoute.UpdateOrderDetail)]
+        public void Update([FromBody] OrderDetail obj)
+        {
+            service.Update(obj);
+        }
     }
 }

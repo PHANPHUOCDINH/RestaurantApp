@@ -17,6 +17,7 @@ namespace RestaurantApp.Services.IService
         void UpdateCookRequest(OrderDetail od);
 
         void UpdateStatus(OrderDetail od);
+        void Update(OrderDetail obj);
 
         void DeleteById(string id);
 

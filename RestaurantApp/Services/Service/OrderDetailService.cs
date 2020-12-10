@@ -28,7 +28,7 @@ namespace RestaurantApp.Services.Service
 
         public async Task<List<OrderDetail>> GetAll(string cookId)
         {
-            return await context.OrderDetail.Where(x => !x.OrderDetailIsDeleted && (x.CookId==cookId || x.CookId==null)).ToListAsync();
+            return await context.OrderDetail.Where(x => !x.OrderDetailIsDeleted && (x.CookId == cookId || x.CookId == null)).ToListAsync();
         }
 
         public async Task<List<OrderDetail>> GetAllByOrderId(string orderid)
@@ -40,7 +40,7 @@ namespace RestaurantApp.Services.Service
         {
             var obj = context.OrderDetail.Where(x => x.OrderDetailId == id && !x.OrderDetailIsDeleted).FirstOrDefault();
             return (OrderDetail)obj;
-         
+
         }
 
         public string Insert(OrderDetail orderdetail)
@@ -51,6 +51,20 @@ namespace RestaurantApp.Services.Service
 
             context.SaveChangesAsync();
             return orderdetail.OrderDetailId;
+        }
+
+        public void Update(OrderDetail obj)
+        {
+            var detail = context.OrderDetail.Where(x => x.OrderDetailId == obj.OrderDetailId).FirstOrDefault();
+            detail.OrderId = obj.OrderId;
+            detail.DishId = obj.DishId;
+            detail.CookId = obj.CookId;
+            detail.OrderDetailStatus = obj.OrderDetailStatus;
+            detail.OrderDetailStarttime = obj.OrderDetailStarttime;
+            detail.OrderDetailEndtime = obj.OrderDetailEndtime;
+            detail.OrderDetailIsDeleted = obj.OrderDetailIsDeleted;
+            context.OrderDetail.Update(detail);
+            context.SaveChangesAsync();
         }
 
         public void UpdateCookRequest(OrderDetail od)

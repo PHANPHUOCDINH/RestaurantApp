@@ -27,6 +27,7 @@ namespace RestaurantApp.Route
         public const string DeleteOrderDetail = "orderdetail/{id}";
         public const string UpdateCookRequest = "orderdetail/updatecookrequest";
         public const string UpdateStatus = "orderdetail/updatestatus";
+        public const string UpdateOrderDetail = "orderdetail/update";
         public const string GetAllStaffAsync = "staff/getall/{isactive}";
         public const string InsertStaff = "staff/add";
         public const string DeleteStaff = "staff/{id}";
