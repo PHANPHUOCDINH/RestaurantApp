@@ -33,7 +33,7 @@ namespace RestaurantApp.Services.Service
 
         public async Task<List<Order>> GetAll()
         {
-            return await context.Order.Where(x=>!x.OrderIsDeleted).ToListAsync();
+            return await context.Order.Where(x => !x.OrderIsDeleted).ToListAsync();
         }
 
 
@@ -55,6 +55,8 @@ namespace RestaurantApp.Services.Service
             obj.OrderTotal = order.OrderTotal;
             obj.TableId = order.TableId;
             obj.WaiterId = order.WaiterId;
+            obj.OrderStatus = order.OrderStatus;
+            obj.OrderIsDeleted = order.OrderIsDeleted;
             context.Order.Update(obj);
             context.SaveChangesAsync();
         }
