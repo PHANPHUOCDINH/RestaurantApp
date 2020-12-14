@@ -29,7 +29,7 @@ namespace RestaurantApp.Controllers
         [HttpPost(ApiRoute.AddDish)]
         public IActionResult AddDish([FromBody] Dish dish)
         {
-            return Ok(service.Insert(dish));
+            return Ok(new { Id = service.Insert(dish) });
         }
 
         [HttpGet(ApiRoute.GetDishById)]
