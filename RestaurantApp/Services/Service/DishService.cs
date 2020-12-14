@@ -28,7 +28,6 @@ namespace RestaurantApp.Services.Service
 
         public string Insert(Dish dish)
         {
-            dish.DishIsActive = false;
             dish.DishId = Guid.NewGuid().ToString();
             context.Dish.Add(dish);
             context.SaveChangesAsync();
@@ -71,7 +70,7 @@ namespace RestaurantApp.Services.Service
 
         public async Task<List<Dish>> GetAllDish(bool isactive)
         {
-            if(isactive)
+            if (isactive)
                 return await context.Dish.Where(x => x.DishIsActive).ToListAsync();
             else
                 return await context.Dish.ToListAsync();
